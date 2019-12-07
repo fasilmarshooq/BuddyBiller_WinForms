@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class TransactionDetail
+namespace BB.System.Common
 {
-    public int id { get; set; }
-    public Nullable<int> product_id { get; set; }
-    public Nullable<decimal> rate { get; set; }
-    public Nullable<decimal> qty { get; set; }
-    public Nullable<decimal> total { get; set; }
-    public Nullable<int> dea_cust_id { get; set; }
-    public Nullable<System.DateTime> added_date { get; set; }
-    public Nullable<int> added_by { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class TransactionDetail
+    {
+        public int Id { get; set; }
+        public Nullable<decimal> Rate { get; set; }
+        public Nullable<decimal> Qty { get; set; }
+        public Nullable<decimal> Total { get; set; }
+    
+        public virtual Product Product { get; set; }
+        public virtual Transaction Transaction { get; set; }
+    }
 }

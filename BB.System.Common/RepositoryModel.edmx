@@ -4,173 +4,197 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="RepositoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="categories">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="50" />
-          <Property Name="description" Type="text" />
-          <Property Name="added_date" Type="datetime" />
-          <Property Name="added_by" Type="int" />
-        </EntityType>
-        <EntityType Name="Parties">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="name" Type="varchar" MaxLength="150" />
-          <Property Name="email" Type="varchar" MaxLength="150" />
-          <Property Name="contact" Type="varchar" MaxLength="15" />
-          <Property Name="address" Type="text" />
-          <Property Name="added_date" Type="datetime" />
-          <Property Name="added_by" Type="int" />
-        </EntityType>
-        <EntityType Name="Products">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="category" Type="varchar" MaxLength="50" />
-          <Property Name="description" Type="text" />
-          <Property Name="rate" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="qty" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="added_date" Type="datetime" />
-          <Property Name="added_by" Type="int" />
-        </EntityType>
-        <EntityType Name="TransactionDetails">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="product_id" Type="int" />
-          <Property Name="rate" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="qty" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="total" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="dea_cust_id" Type="int" />
-          <Property Name="added_date" Type="datetime" />
-          <Property Name="added_by" Type="int" />
-        </EntityType>
-        <EntityType Name="Transactions">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="dea_cust_id" Type="int" />
-          <Property Name="grandTotal" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="transaction_date" Type="datetime" />
-          <Property Name="tax" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="discount" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="added_by" Type="int" />
-        </EntityType>
-        <EntityType Name="users">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="first_name" Type="varchar" MaxLength="50" />
-          <Property Name="last_name" Type="varchar" MaxLength="50" />
-          <Property Name="email" Type="varchar" MaxLength="150" />
-          <Property Name="username" Type="varchar" MaxLength="50" />
-          <Property Name="password" Type="varchar" MaxLength="50" />
-          <Property Name="contact" Type="varchar" MaxLength="15" />
-          <Property Name="address" Type="text" />
-          <Property Name="gender" Type="varchar" MaxLength="10" />
-          <Property Name="user_type" Type="varchar" MaxLength="15" />
-          <Property Name="added_date" Type="datetime" />
-          <Property Name="added_by" Type="int" />
-        </EntityType>
-      <EntityType Name="partytypeconfigs">
-        <Key>
-          <PropertyRef Name="id" />
-        </Key>
-        <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        <Property Name="Name" Type="varchar" MaxLength="40" />
-      </EntityType>
-        <EntityContainer Name="RepositoryModelStoreContainer">
-          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Parties" EntityType="Self.Parties" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="partytypeconfigs" EntityType="Self.partytypeconfigs" Schema="dbo" store:Type="Tables" />
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="RepositoryModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RepositoryModelStoreContainer">
+    <EntitySet Name="ProductTypes" EntityType="RepositoryModel.Store.ProductTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parties" EntityType="RepositoryModel.Store.Parties" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="RepositoryModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransactionDetails" EntityType="RepositoryModel.Store.TransactionDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Transactions" EntityType="RepositoryModel.Store.Transactions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users" EntityType="RepositoryModel.Store.users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ProductProductType" Association="RepositoryModel.Store.ProductProductType">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductType" EntitySet="ProductTypes" />
+    </AssociationSet>
+    <AssociationSet Name="TransactionDetailProduct" Association="RepositoryModel.Store.TransactionDetailProduct">
+      <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ProductTypes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="added_date" Type="datetime" Nullable="true" />
+    <Property Name="added_by" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Parties">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Name" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="Email" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="PhoneNumber" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="Address" Type="varchar(max)" Nullable="true" />
+    <Property Name="Added_Date" Type="datetime" Nullable="true" />
+    <Property Name="Added_By" Type="int" Nullable="true" />
+    <Property Name="Modifed_Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Modified_By" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="description" Type="varchar(max)" Nullable="true" />
+    <Property Name="rate" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="qty" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="added_date" Type="datetime" Nullable="true" />
+    <Property Name="added_by" Type="int" Nullable="true" />
+    <Property Name="ProductType_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rate" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="qty" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="total" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="dea_cust_id" Type="int" Nullable="true" />
+    <Property Name="added_date" Type="datetime" Nullable="true" />
+    <Property Name="added_by" Type="int" Nullable="true" />
+    <Property Name="Product_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="dea_cust_id" Type="int" Nullable="true" />
+    <Property Name="grandTotal" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="transaction_date" Type="datetime" Nullable="true" />
+    <Property Name="tax" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="discount" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="added_by" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="email" Type="varchar" Nullable="true" MaxLength="150" />
+    <Property Name="username" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="password" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="contact" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="address" Type="varchar(max)" Nullable="true" />
+    <Property Name="gender" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="user_type" Type="varchar" Nullable="true" MaxLength="15" />
+    <Property Name="added_date" Type="datetime" Nullable="true" />
+    <Property Name="added_by" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="ProductProductType">
+    <End Role="Product" Type="RepositoryModel.Store.Products" Multiplicity="*" />
+    <End Role="ProductType" Type="RepositoryModel.Store.ProductTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductType_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransactionDetailProduct">
+    <End Role="TransactionDetail" Type="RepositoryModel.Store.TransactionDetails" Multiplicity="*" />
+    <End Role="Product" Type="RepositoryModel.Store.Products" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TransactionDetail">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RepositoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="category">
+        <EntityType Name="ProductType">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="added_date" Type="DateTime" Precision="3" />
-          <Property Name="added_by" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Added_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Added_By" Relationship="RepositoryModel.ProductTypeuser" FromRole="ProductType" ToRole="user" />
         </EntityType>
         <EntityType Name="Party">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="contact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="added_date" Type="DateTime" Precision="3" />
-          <Property Name="added_by" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Added_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Added_By" Relationship="RepositoryModel.Partyuser" FromRole="Party" ToRole="user" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="qty" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="added_date" Type="DateTime" Precision="3" />
-          <Property Name="added_by" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Added_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProductTypeId" Relationship="RepositoryModel.ProductProductType" FromRole="Product" ToRole="ProductType" />
+          <NavigationProperty Name="Added_By" Relationship="RepositoryModel.Productuser" FromRole="Product" ToRole="user" />
         </EntityType>
         <EntityType Name="TransactionDetail">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="product_id" Type="Int32" />
-          <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="qty" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="dea_cust_id" Type="Int32" />
-          <Property Name="added_date" Type="DateTime" Precision="3" />
-          <Property Name="added_by" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Product" Relationship="RepositoryModel.TransactionDetailProduct" FromRole="TransactionDetail" ToRole="Product" />
+          <NavigationProperty Name="Transaction" Relationship="RepositoryModel.TransactionTransactionDetail" FromRole="TransactionDetail" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="dea_cust_id" Type="Int32" />
-          <Property Name="grandTotal" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="transaction_date" Type="DateTime" Precision="3" />
-          <Property Name="tax" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="discount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="added_by" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Transaction_date" Type="DateTime" Precision="3" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Added_By" Relationship="RepositoryModel.Transactionuser" FromRole="Transaction" ToRole="user" />
+          <NavigationProperty Name="Party" Relationship="RepositoryModel.TransactionParty" FromRole="Transaction" ToRole="Party" />
         </EntityType>
-        <EntityType Name="user">
+        <EntityType Name="User">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
@@ -183,125 +207,177 @@
           <Property Name="added_date" Type="DateTime" Precision="3" />
           <Property Name="added_by" Type="Int32" />
         </EntityType>
-        <EntityType Name="partytypeconfig">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-        </EntityType>
-        
-        <EntityContainer Name="BuddyBillerRepository" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="categories" EntityType="Self.category" />
+        <EntityContainer Name="BuddyBiller" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProductTypes" EntityType="RepositoryModel.ProductType" />
           <EntitySet Name="Parties" EntityType="Self.Party" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetail" />
-          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
-          <EntitySet Name="users" EntityType="Self.user" />
-          <EntitySet Name="partytypeconfigs" EntityType="Self.partytypeconfig" />
+          <EntitySet Name="Users" EntityType="RepositoryModel.User" />
+          <AssociationSet Name="ProductProductType" Association="RepositoryModel.ProductProductType">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductType" EntitySet="ProductTypes" />
+          </AssociationSet>
+          <AssociationSet Name="TransactionDetailProduct" Association="RepositoryModel.TransactionDetailProduct">
+            <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="TransactionTransactionDetail" Association="RepositoryModel.TransactionTransactionDetail">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="Transactionuser" Association="RepositoryModel.Transactionuser">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="user" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Partyuser" Association="RepositoryModel.Partyuser">
+            <End Role="Party" EntitySet="Parties" />
+            <End Role="user" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Productuser" Association="RepositoryModel.Productuser">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="user" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="ProductTypeuser" Association="RepositoryModel.ProductTypeuser">
+            <End Role="ProductType" EntitySet="ProductTypes" />
+            <End Role="user" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Transactions" EntityType="RepositoryModel.Transaction" />
+          <AssociationSet Name="TransactionParty" Association="RepositoryModel.TransactionParty">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Party" EntitySet="Parties" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="ProductProductType">
+          <End Type="RepositoryModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="RepositoryModel.ProductType" Role="ProductType" Multiplicity="1" />
+        </Association>
+        <Association Name="TransactionDetailProduct">
+          <End Type="RepositoryModel.TransactionDetail" Role="TransactionDetail" Multiplicity="1" />
+          <End Type="RepositoryModel.Product" Role="Product" Multiplicity="1" />
+        </Association>
+        <Association Name="TransactionTransactionDetail">
+          <End Type="RepositoryModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="RepositoryModel.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />          
+        </Association>
+        <Association Name="Transactionuser">
+          <End Type="RepositoryModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="RepositoryModel.User" Role="user" Multiplicity="1" />
+        </Association>
+        <Association Name="Partyuser">
+          <End Type="RepositoryModel.Party" Role="Party" Multiplicity="1" />
+          <End Type="RepositoryModel.User" Role="user" Multiplicity="1" />
+        </Association>
+        <Association Name="Productuser">
+          <End Type="RepositoryModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="RepositoryModel.User" Role="user" Multiplicity="1" />
+        </Association>
+        <Association Name="ProductTypeuser">
+          <End Type="RepositoryModel.ProductType" Role="ProductType" Multiplicity="1" />
+          <End Type="RepositoryModel.User" Role="user" Multiplicity="1" />
+        </Association>
+        <Association Name="TransactionParty">
+          <End Type="RepositoryModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="RepositoryModel.Party" Role="Party" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RepositoryModelStoreContainer" CdmEntityContainer="BuddyBillerRepository">
-          <EntitySetMapping Name="categories">
-            <EntityTypeMapping TypeName="RepositoryModel.category">
-              <MappingFragment StoreEntitySet="categories">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="added_date" ColumnName="added_date" />
-                <ScalarProperty Name="added_by" ColumnName="added_by" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Parties">
-            <EntityTypeMapping TypeName="RepositoryModel.Party">
-              <MappingFragment StoreEntitySet="Parties">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="added_date" ColumnName="added_date" />
-                <ScalarProperty Name="added_by" ColumnName="added_by" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="RepositoryModel.Product">
-              <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="category" ColumnName="category" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="rate" ColumnName="rate" />
-                <ScalarProperty Name="qty" ColumnName="qty" />
-                <ScalarProperty Name="added_date" ColumnName="added_date" />
-                <ScalarProperty Name="added_by" ColumnName="added_by" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TransactionDetails">
-            <EntityTypeMapping TypeName="RepositoryModel.TransactionDetail">
-              <MappingFragment StoreEntitySet="TransactionDetails">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="rate" ColumnName="rate" />
-                <ScalarProperty Name="qty" ColumnName="qty" />
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="dea_cust_id" ColumnName="dea_cust_id" />
-                <ScalarProperty Name="added_date" ColumnName="added_date" />
-                <ScalarProperty Name="added_by" ColumnName="added_by" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RepositoryModelStoreContainer" CdmEntityContainer="BuddyBiller">
+    <EntitySetMapping Name="ProductTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.ProductType)">
+        <MappingFragment StoreEntitySet="ProductTypes">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Added_Date" ColumnName="added_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parties">
+      <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.Party)">
+        <MappingFragment StoreEntitySet="Parties">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Added_Date" ColumnName="Added_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="Description" ColumnName="description" />
+          <ScalarProperty Name="Rate" ColumnName="rate" />
+          <ScalarProperty Name="Qty" ColumnName="qty" />
+          <ScalarProperty Name="Added_Date" ColumnName="added_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.TransactionDetail)">
+        <MappingFragment StoreEntitySet="TransactionDetails">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Rate" ColumnName="rate" />
+          <ScalarProperty Name="Qty" ColumnName="qty" />
+          <ScalarProperty Name="Total" ColumnName="total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.User)">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="user_type" ColumnName="user_type" />
+          <ScalarProperty Name="added_date" ColumnName="added_date" />
+          <ScalarProperty Name="added_by" ColumnName="added_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProductProductType" TypeName="RepositoryModel.ProductProductType" StoreEntitySet="Products">
+      <EndProperty Name="ProductType">
+        <ScalarProperty Name="Id" ColumnName="ProductType_id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TransactionDetailProduct" TypeName="RepositoryModel.TransactionDetailProduct" StoreEntitySet="TransactionDetails">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Product_id" />
+      </EndProperty>
+      <EndProperty Name="TransactionDetail">
+        <ScalarProperty Name="Id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
           <EntitySetMapping Name="Transactions">
-            <EntityTypeMapping TypeName="RepositoryModel.Transaction">
+            <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.Transaction)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
               <MappingFragment StoreEntitySet="Transactions">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="dea_cust_id" ColumnName="dea_cust_id" />
-                <ScalarProperty Name="grandTotal" ColumnName="grandTotal" />
-                <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
-                <ScalarProperty Name="tax" ColumnName="tax" />
-                <ScalarProperty Name="discount" ColumnName="discount" />
-                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Type" ColumnName="type" />
+                <ScalarProperty Name="GrandTotal" ColumnName="grandTotal" />
+                <ScalarProperty Name="Transaction_date" ColumnName="transaction_date" />
+                <ScalarProperty Name="Tax" ColumnName="tax" />
+                <ScalarProperty Name="Discount" ColumnName="discount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="RepositoryModel.user">
-              <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="user_type" ColumnName="user_type" />
-                <ScalarProperty Name="added_date" ColumnName="added_date" />
-                <ScalarProperty Name="added_by" ColumnName="added_by" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="partytypeconfigs">
-            <EntityTypeMapping TypeName="RepositoryModel.partytypeconfig">
-              <MappingFragment StoreEntitySet="partytypeconfigs">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -314,8 +390,8 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

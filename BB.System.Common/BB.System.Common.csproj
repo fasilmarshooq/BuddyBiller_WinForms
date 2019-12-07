@@ -55,17 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="category.cs">
-      <DependentUpon>RepositoryModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSetLinqOperators.cs" />
     <Compile Include="Party.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="partytypeconfig.cs">
+    <Compile Include="Product.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Product.cs">
+    <Compile Include="ProductType.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RepositoryFactory.cs" />
@@ -91,7 +88,7 @@
     <Compile Include="TransactionDetail.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="user.cs">
+    <Compile Include="User.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

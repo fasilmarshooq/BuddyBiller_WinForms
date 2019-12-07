@@ -7,14 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class category
+namespace BB.System.Common
 {
-    public int id { get; set; }
-    public string title { get; set; }
-    public string description { get; set; }
-    public Nullable<System.DateTime> added_date { get; set; }
-    public Nullable<int> added_by { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class ProductType
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> Added_Date { get; set; }
+    
+        public virtual User Added_By { get; set; }
+    }
 }

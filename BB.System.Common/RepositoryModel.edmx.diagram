@@ -5,12 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4c175b032d79464c98b3b4200b4644c4" Name="Diagram1">
-        <EntityTypeShape EntityType="RepositoryModel.category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepositoryModel.Party" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepositoryModel.Product" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepositoryModel.TransactionDetail" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepositoryModel.Transaction" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepositoryModel.user" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepositoryModel.ProductType" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepositoryModel.Party" Width="1.5" PointX="5.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepositoryModel.Product" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepositoryModel.TransactionDetail" Width="1.5" PointX="4.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepositoryModel.Transaction" Width="1.5" PointX="0.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepositoryModel.User" Width="1.5" PointX="10" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="RepositoryModel.ProductProductType" />
+        <AssociationConnector Association="RepositoryModel.TransactionDetailProduct" />
+        <AssociationConnector Association="RepositoryModel.TransactionTransactionDetail" />
+        <AssociationConnector Association="RepositoryModel.Transactionuser" />
+        <AssociationConnector Association="RepositoryModel.Partyuser" />
+        <AssociationConnector Association="RepositoryModel.Productuser" ManuallyRouted="true" >
+          <ConnectorPoint PointX="3.625" PointY="3.0571907552083331" />
+          <ConnectorPoint PointX="3.625" PointY="3.4504728776041675" />
+          <ConnectorPoint PointX="4.9166671666666675" PointY="3.4504728776041671" />
+          <ConnectorPoint PointX="5.0833338333333336" PointY="3.4504728776041675" />
+          <ConnectorPoint PointX="6.416666666666667" PointY="3.4504728776041671" />
+          <ConnectorPoint PointX="6.583333333333333" PointY="3.4504728776041675" />
+          <ConnectorPoint PointX="7.89625" PointY="3.4504728776041675" />
+          <ConnectorPoint PointX="7.89625" PointY="3.3879728776041675" />
+          <ConnectorPoint PointX="10" PointY="3.3879728776041675" />
+        </AssociationConnector>
+        <AssociationConnector Association="RepositoryModel.ProductTypeuser" />
+        <AssociationConnector Association="RepositoryModel.TransactionParty" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

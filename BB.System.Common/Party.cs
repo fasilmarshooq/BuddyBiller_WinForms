@@ -7,17 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Party
+namespace BB.System.Common
 {
-    public int id { get; set; }
-    public string type { get; set; }
-    public string name { get; set; }
-    public string email { get; set; }
-    public string contact { get; set; }
-    public string address { get; set; }
-    public Nullable<System.DateTime> added_date { get; set; }
-    public Nullable<int> added_by { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Party
+    {
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public Nullable<System.DateTime> Added_Date { get; set; }
+    
+        public virtual User Added_By { get; set; }
+    }
 }
