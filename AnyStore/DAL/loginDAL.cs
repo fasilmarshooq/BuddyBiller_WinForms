@@ -23,7 +23,7 @@ namespace AnyStore.DAL
 
             try
             {
-                using (BB.System.Common.BuddyBiller db = new BB.System.Common.BuddyBiller())
+                using (BuddyBillerRepository db = new BuddyBillerRepository())
                 {
 
                     var usercontext = from user in db.users

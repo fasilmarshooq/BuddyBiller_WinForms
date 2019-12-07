@@ -11,27 +11,25 @@ using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
-namespace BB.System.Common
+
+
+public partial class BuddyBillerRepository : DbContext
 {
-    
-    
-    public partial class BuddyBiller : DbContext
+    public BuddyBillerRepository()
+        : base("name=BuddyBillerRepository")
     {
-        public BuddyBiller()
-            : base("name=BuddyBiller")
-        {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<category> categories { get; set; }
-        public virtual DbSet<Party> Parties { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
-        public virtual DbSet<user> users { get; set; }
     }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        throw new UnintentionalCodeFirstException();
+    }
+
+    public virtual DbSet<category> categories { get; set; }
+    public virtual DbSet<Party> Parties { get; set; }
+    public virtual DbSet<Product> Products { get; set; }
+    public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
+    public virtual DbSet<Transaction> Transactions { get; set; }
+    public virtual DbSet<user> users { get; set; }
+    public virtual DbSet<partytypeconfig> partytypeconfigs { get; set; }
 }

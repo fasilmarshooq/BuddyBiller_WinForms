@@ -58,7 +58,11 @@
     <Compile Include="category.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSetLinqOperators.cs" />
     <Compile Include="Party.cs">
+      <DependentUpon>RepositoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="partytypeconfig.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
