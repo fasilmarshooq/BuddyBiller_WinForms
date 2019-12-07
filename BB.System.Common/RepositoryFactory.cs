@@ -14,9 +14,12 @@ namespace BB.System.Common
         public static SqlConnection RepositoryConnectionBuilder()
         {
 
-            string myconnstrng = ConfigurationManager.ConnectionStrings["connstrng"].ConnectionString;
+            string myconnstrng = ConfigurationManager.ConnectionStrings["temp"].ConnectionString;
 
              SqlConnection conn = new SqlConnection(myconnstrng);
+
+            BuddyBillerRepository db = new BuddyBillerRepository();
+
 
             return conn;
         }

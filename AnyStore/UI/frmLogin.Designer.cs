@@ -54,10 +54,10 @@
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.lblUsername);
             this.panel1.Controls.Add(this.lblHeader);
-            this.panel1.Location = new System.Drawing.Point(46, 54);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(41, 43);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(418, 483);
+            this.panel1.Size = new System.Drawing.Size(372, 386);
             this.panel1.TabIndex = 0;
             // 
             // btnLogin
@@ -66,10 +66,10 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(62, 360);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLogin.Location = new System.Drawing.Point(55, 288);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(286, 75);
+            this.btnLogin.Size = new System.Drawing.Size(254, 60);
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -82,41 +82,44 @@
             this.cmbUserType.Items.AddRange(new object[] {
             "User",
             "Admin"});
-            this.cmbUserType.Location = new System.Drawing.Point(62, 297);
-            this.cmbUserType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbUserType.Location = new System.Drawing.Point(55, 238);
+            this.cmbUserType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbUserType.Name = "cmbUserType";
-            this.cmbUserType.Size = new System.Drawing.Size(284, 36);
+            this.cmbUserType.Size = new System.Drawing.Size(253, 29);
             this.cmbUserType.TabIndex = 6;
+            this.cmbUserType.Text = "User";
             // 
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(62, 202);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPassword.Location = new System.Drawing.Point(55, 162);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = 'x';
-            this.txtPassword.Size = new System.Drawing.Size(286, 33);
+            this.txtPassword.Size = new System.Drawing.Size(254, 29);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.Text = "test";
             // 
             // txtUsername
             // 
             this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(62, 112);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtUsername.Location = new System.Drawing.Point(55, 90);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(286, 33);
+            this.txtUsername.Size = new System.Drawing.Size(254, 29);
             this.txtUsername.TabIndex = 4;
+            this.txtUsername.Text = "test";
             // 
             // lblUserType
             // 
             this.lblUserType.AutoSize = true;
             this.lblUserType.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserType.Location = new System.Drawing.Point(57, 271);
+            this.lblUserType.Location = new System.Drawing.Point(51, 217);
             this.lblUserType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserType.Name = "lblUserType";
-            this.lblUserType.Size = new System.Drawing.Size(84, 23);
+            this.lblUserType.Size = new System.Drawing.Size(69, 19);
             this.lblUserType.TabIndex = 3;
             this.lblUserType.Text = "User Type";
             // 
@@ -124,10 +127,10 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(57, 177);
+            this.lblPassword.Location = new System.Drawing.Point(51, 142);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(80, 23);
+            this.lblPassword.Size = new System.Drawing.Size(67, 19);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Password";
             // 
@@ -135,10 +138,10 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(57, 86);
+            this.lblUsername.Location = new System.Drawing.Point(51, 69);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(87, 23);
+            this.lblUsername.Size = new System.Drawing.Size(71, 19);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Username";
             // 
@@ -146,20 +149,20 @@
             // 
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeader.Location = new System.Drawing.Point(144, 25);
+            this.lblHeader.Location = new System.Drawing.Point(128, 20);
             this.lblHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(106, 40);
+            this.lblHeader.Size = new System.Drawing.Size(88, 32);
             this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "LOGIN";
             // 
             // pboxClose
             // 
             this.pboxClose.Image = ((System.Drawing.Image)(resources.GetObject("pboxClose.Image")));
-            this.pboxClose.Location = new System.Drawing.Point(462, 11);
-            this.pboxClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pboxClose.Location = new System.Drawing.Point(411, 9);
+            this.pboxClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pboxClose.Name = "pboxClose";
-            this.pboxClose.Size = new System.Drawing.Size(40, 37);
+            this.pboxClose.Size = new System.Drawing.Size(36, 30);
             this.pboxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxClose.TabIndex = 1;
             this.pboxClose.TabStop = false;
@@ -167,16 +170,16 @@
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(518, 592);
+            this.ClientSize = new System.Drawing.Size(460, 474);
             this.Controls.Add(this.pboxClose);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";

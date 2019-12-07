@@ -1,6 +1,5 @@
 ﻿using AnyStore.BLL;
 using AnyStore.DAL;
-using BuddyBiller.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BB.System.Common;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 
 namespace AnyStore.UI
 {
@@ -21,15 +24,19 @@ namespace AnyStore.UI
         }
 
 
-        PartyTypeDAL partyTypeDAL = new PartyTypeDAL();
+        BuddyBillerRepository db = new BuddyBillerRepository();
 
        
+
+
         private void   frmDeaCust_Load(object sender,EventArgs e)
         {
-            DataTable dt = dcDal.Select();
-            dgvDeaCust.DataSource = dt;
-            // DataTable partyTypes = partyTypeDAL.Select();
-            DataTable partyTypes = partyTypeDAL.Select();
+            var partyTypesList = db.partytypeconfigs.Select(X => X);
+            var parties = db.Parties.Select(X => X);
+            DataTable Partiesdt = DataSetLinqOperators.ToDataTable<Party>(parties);
+            dgvDeaCust.DataSource = Partiesdt;
+
+            DataTable partyTypes = DataSetLinqOperators.ToDataTable<partytypeconfig>(partyTypesList);
             cmbDeaCust.DataSource = partyTypes;
             cmbDeaCust.DisplayMember = "Name";
             cmbDeaCust.ValueMember = "Name";
@@ -43,7 +50,7 @@ namespace AnyStore.UI
         DeaCustBLL dc = new DeaCustBLL();
         DeaCustDAL dcDal = new DeaCustDAL();
 
-        userDAL uDal = new userDAL();
+        //userDAL uDal = new userDAL();
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //Get the Values from Form
@@ -53,28 +60,43 @@ namespace AnyStore.UI
             dc.contact = txtContact.Text;
             dc.address = txtAddress.Text;
             dc.added_date = DateTime.Now;
+
+            Party newparty = new Party();
+            newparty.type = cmbDeaCust.Text;
+            newparty.name = txtName.Text;
+            newparty.email = txtEmail.Text;
+            newparty.contact = txtContact.Text;
+            newparty.address = txtAddress.Text;
+            newparty.added_date = DateTime.Now;
+
+
+            db.SaveChanges();
+
             //Getting the ID to Logged in user and passign its value in dealer or cutomer module
-            string loggedUsr = frmLogin.loggedIn;
-            userBLL usr = uDal.GetIDFromUsername(loggedUsr);
-            dc.added_by = usr.id;
+            //string loggedUsr = frmLogin.loggedIn;
+            //userBLL usr = uDal.GetIDFromUsername(loggedUsr);
+            //dc.added_by = usr.id;
 
             //Creating boolean variable to check whether the dealer or cutomer is added or not
-            bool success = dcDal.Insert(dc);
+            // bool success = dcDal.Insert(dc);
 
-            if(success==true)
-            {
-                //Dealer or Cutomer inserted successfully 
-                MessageBox.Show("Dealer or Customer Added Successfully");
-                Clear();
-                //Refresh Data Grid View
-                DataTable dt = dcDal.Select();
-                dgvDeaCust.DataSource = dt;
-            }
-            else
-            {
-                //failed to insert dealer or customer
-            }
+            // if(success==true)
+            //{
+            //Dealer or Cutomer inserted successfully 
+            //    MessageBox.Show("Dealer or Customer Added Successfully");
+            //    Clear();
+            //    //Refresh Data Grid View
+            //    DataTable dt = dcDal.Select();
+            //    dgvDeaCust.DataSource = dt;
+            //}
+            //else
+            //{
+            //    //failed to insert dealer or customer
+            //}
         }
+
+
+      
         public void Clear()
         {
             txtDeaCustID.Text = "";
@@ -85,7 +107,7 @@ namespace AnyStore.UI
             txtSearch.Text = "";
         }
 
-
+        public string partyID;
 
         private void dgvDeaCust_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -98,6 +120,8 @@ namespace AnyStore.UI
             txtEmail.Text = dgvDeaCust.Rows[rowIndex].Cells[3].Value.ToString();
             txtContact.Text = dgvDeaCust.Rows[rowIndex].Cells[4].Value.ToString();
             txtAddress.Text = dgvDeaCust.Rows[rowIndex].Cells[5].Value.ToString();
+
+            partyID = txtDeaCustID.Text;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -112,8 +136,8 @@ namespace AnyStore.UI
             dc.added_date = DateTime.Now;
             //Getting the ID to Logged in user and passign its value in dealer or cutomer module
             string loggedUsr = frmLogin.loggedIn;
-            userBLL usr = uDal.GetIDFromUsername(loggedUsr);
-            dc.added_by = usr.id;
+            //userBLL usr = uDal.GetIDFromUsername(loggedUsr);
+           // dc.added_by = usr.id;
 
             //create boolean variable to check whether the dealer or customer is updated or not
             bool success = dcDal.Update(dc);
