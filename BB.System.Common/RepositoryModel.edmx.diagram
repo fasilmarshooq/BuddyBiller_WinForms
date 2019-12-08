@@ -17,13 +17,10 @@
         <AssociationConnector Association="RepositoryModel.Transactionuser" />
         <AssociationConnector Association="RepositoryModel.Partyuser" />
         <AssociationConnector Association="RepositoryModel.Productuser" ManuallyRouted="true" >
-          <ConnectorPoint PointX="3.625" PointY="3.0571907552083331" />
-          <ConnectorPoint PointX="3.625" PointY="3.3768929036458259" />
-          <ConnectorPoint PointX="4.9166671666666675" PointY="3.3768929036458255" />
-          <ConnectorPoint PointX="5.0833338333333336" PointY="3.3768929036458259" />
-          <ConnectorPoint PointX="6.260416666666667" PointY="3.3768929036458255" />
-          <ConnectorPoint PointX="6.427083333333333" PointY="3.3768929036458259" />
-          <ConnectorPoint PointX="10" PointY="3.3768929036458259" />
+          <ConnectorPoint PointX="4.375" PointY="0.50115284615384614" />
+          <ConnectorPoint PointX="4.7511528461538459" PointY="0.125" />
+          <ConnectorPoint PointX="9.625" PointY="0.125" />
+          <ConnectorPoint PointX="10" PointY="0.5" />
         </AssociationConnector>
         <AssociationConnector Association="RepositoryModel.ProductTypeuser" />
         <AssociationConnector Association="RepositoryModel.TransactionParty" />

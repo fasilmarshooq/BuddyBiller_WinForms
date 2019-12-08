@@ -18,6 +18,7 @@ public partial class Product
     public Nullable<decimal> Rate { get; set; }
     public Nullable<decimal> Qty { get; set; }
     public Nullable<System.DateTime> Added_Date { get; set; }
+    public bool IsActive { get; set; }
 
     public virtual ProductType ProductType { get; set; }
     public virtual User Added_By { get; set; }
