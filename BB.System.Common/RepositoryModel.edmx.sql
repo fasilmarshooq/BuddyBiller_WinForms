@@ -78,6 +78,7 @@ CREATE TABLE [dbo].[ProductTypes] (
     [Name] varchar(50)  NULL,
     [Description] varchar(max)  NULL,
     [Added_Date] datetime  NULL,
+    [IsActive] bit  NOT NULL,
     [Added_By_Id] int  NOT NULL
 );
 GO

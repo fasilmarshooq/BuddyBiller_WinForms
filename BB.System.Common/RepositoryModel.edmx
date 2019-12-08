@@ -54,6 +54,7 @@
     <Property Name="Name" Type="varchar" Nullable="true" MaxLength="50" />
     <Property Name="Description" Type="varchar(max)" Nullable="true" />
     <Property Name="Added_Date" Type="datetime" Nullable="true" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="Added_By_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Parties">
@@ -239,6 +240,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Added_Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Added_By" Relationship="RepositoryModel.ProductTypeuser" FromRole="ProductType" ToRole="user" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Party">
           <Key>
@@ -400,6 +402,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Added_Date" ColumnName="Added_Date" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

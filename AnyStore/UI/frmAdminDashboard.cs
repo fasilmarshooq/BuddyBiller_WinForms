@@ -38,7 +38,7 @@ namespace AnyStore
 
         private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCategories category = new frmCategories();
+            frmProductTypes category = new frmProductTypes();
             category.Show();
         }
 

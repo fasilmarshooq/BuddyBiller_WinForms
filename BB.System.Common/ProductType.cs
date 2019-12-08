@@ -16,6 +16,7 @@ public partial class ProductType
     public string Name { get; set; }
     public string Description { get; set; }
     public Nullable<System.DateTime> Added_Date { get; set; }
+    public bool IsActive { get; set; }
 
     public virtual User Added_By { get; set; }
 }
