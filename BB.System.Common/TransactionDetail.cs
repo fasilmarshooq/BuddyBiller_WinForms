@@ -7,19 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BB.System.Common
+using System;
+using System.Collections.Generic;
+
+public partial class TransactionDetail
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class TransactionDetail
-    {
-        public int Id { get; set; }
-        public Nullable<decimal> Rate { get; set; }
-        public Nullable<decimal> Qty { get; set; }
-        public Nullable<decimal> Total { get; set; }
-    
-        public virtual Product Product { get; set; }
-        public virtual Transaction Transaction { get; set; }
-    }
+    public int Id { get; set; }
+    public Nullable<decimal> Rate { get; set; }
+    public Nullable<decimal> Qty { get; set; }
+    public Nullable<decimal> Total { get; set; }
+
+    public virtual Product Product { get; set; }
+    public virtual Transaction Transaction { get; set; }
 }

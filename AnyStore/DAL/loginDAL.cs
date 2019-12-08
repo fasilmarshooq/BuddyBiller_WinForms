@@ -26,7 +26,7 @@ namespace AnyStore.DAL
                 using (BuddyBillerRepository db = new BuddyBillerRepository())
                 {
 
-                    var usercontext = from user in db.users
+                    var usercontext = from user in db.Users
                                       where user.username.Equals(l.username)
                                       && user.password.Equals(l.password)
                                       && user.user_type.Equals(l.user_type)

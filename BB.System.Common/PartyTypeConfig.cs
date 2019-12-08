@@ -10,15 +10,8 @@
 using System;
 using System.Collections.Generic;
 
-public partial class Transaction
+public partial class PartyTypeConfig
 {
     public int Id { get; set; }
-    public string Type { get; set; }
-    public Nullable<System.DateTime> Transaction_date { get; set; }
-    public Nullable<decimal> Tax { get; set; }
-    public Nullable<decimal> Discount { get; set; }
-    public Nullable<decimal> GrandTotal { get; set; }
-
-    public virtual User Added_By { get; set; }
-    public virtual Party Party { get; set; }
+    public string Name { get; set; }
 }

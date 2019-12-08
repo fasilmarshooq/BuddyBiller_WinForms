@@ -59,6 +59,9 @@
     <Compile Include="Party.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartyTypeConfig.cs">
+      <DependentUpon>RepositoryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>RepositoryModel.tt</DependentUpon>
     </Compile>
@@ -108,7 +111,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RepositoryModel.edmx</DependentUpon>
       <LastGenOutput>RepositoryModel.Context.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
+    <Content Include="RepositoryModel.edmx.sql" />
     <Content Include="RepositoryModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RepositoryModel.edmx</DependentUpon>

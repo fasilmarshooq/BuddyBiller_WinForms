@@ -14,13 +14,15 @@ namespace BB.System.Common
         {
             Type type = typeof(T);
 
-            var props = TypeDescriptor.GetProperties(type)
-                                      .Cast<PropertyDescriptor>()
-                                      .Where(propertyInfo => propertyInfo.PropertyType.Namespace.Equals("System"))
-                                      .Where(propertyInfo => propertyInfo.IsReadOnly == false)
-                                      .ToArray();
+            var table = new DataTable();         
 
-            var table = new DataTable();
+            var props = TypeDescriptor.GetProperties(type)
+                                      ?.Cast<PropertyDescriptor>()
+                                      ?.Where(propertyInfo => propertyInfo.PropertyType.Namespace?.Equals("System") ?? false)
+                                      ?.Where(propertyInfo => propertyInfo.IsReadOnly == false)
+                                      ?.ToArray();
+
+           
 
             foreach (var propertyInfo in props)
             {

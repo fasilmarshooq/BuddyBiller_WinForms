@@ -18,28 +18,35 @@ namespace AnyStore.UI
 {
     public partial class frmDeaCust : Form
     {
+        BuddyBillerRepository db = new BuddyBillerRepository();
+        IQueryable<Party> parties;
+        DataTable Partiesdt;
         public frmDeaCust()
         {
             InitializeComponent();
+            
+            
         }
 
+        private void reloadForm()
+        {
+            Clear();
+            var partyTypesList = db.PartyTypeConfigs.Select(X => X);
+            parties = db.Parties.Select(X => X).Where(x=>x.IsActive);
 
-        BuddyBillerRepository db = new BuddyBillerRepository();
+            Partiesdt = DataSetLinqOperators.ToDataTable<Party>(parties);
+            dgvDeaCust.DataSource = Partiesdt;
 
-       
+            DataTable partyTypes = DataSetLinqOperators.ToDataTable<PartyTypeConfig>(partyTypesList);
+            cmbDeaCust.DataSource = partyTypes;
+            cmbDeaCust.DisplayMember = "Name";
+            cmbDeaCust.ValueMember = "Name";
+        }
 
 
         private void   frmDeaCust_Load(object sender,EventArgs e)
         {
-            var partyTypesList = db.partytypeconfigs.Select(X => X);
-            var parties = db.Parties.Select(X => X);
-            DataTable Partiesdt = DataSetLinqOperators.ToDataTable<Party>(parties);
-            dgvDeaCust.DataSource = Partiesdt;
-
-            DataTable partyTypes = DataSetLinqOperators.ToDataTable<partytypeconfig>(partyTypesList);
-            cmbDeaCust.DataSource = partyTypes;
-            cmbDeaCust.DisplayMember = "Name";
-            cmbDeaCust.ValueMember = "Name";
+            reloadForm();
         }
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
@@ -54,24 +61,21 @@ namespace AnyStore.UI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //Get the Values from Form
-            dc.type = cmbDeaCust.Text;
-            dc.name = txtName.Text;
-            dc.email = txtEmail.Text;
-            dc.contact = txtContact.Text;
-            dc.address = txtAddress.Text;
-            dc.added_date = DateTime.Now;
-
-            Party newparty = new Party();
-            newparty.type = cmbDeaCust.Text;
-            newparty.name = txtName.Text;
-            newparty.email = txtEmail.Text;
-            newparty.contact = txtContact.Text;
-            newparty.address = txtAddress.Text;
-            newparty.added_date = DateTime.Now;
 
 
-            db.SaveChanges();
+            Party party = new Party();
+            party.Id = txtDeaCustID.Text.Equals("") ? 0  : int.Parse(txtDeaCustID.Text);
+            party.Type = cmbDeaCust.Text;
+            party.Name = txtName.Text;
+            party.Email = txtEmail.Text;
+            party.PhoneNumber = txtContact.Text;
+            party.Address = txtAddress.Text;
+            party.Added_Date = DateTime.Now;
+            party.IsActive = true;
 
+
+            SaveOrUpdate(party);
+            reloadForm();
             //Getting the ID to Logged in user and passign its value in dealer or cutomer module
             //string loggedUsr = frmLogin.loggedIn;
             //userBLL usr = uDal.GetIDFromUsername(loggedUsr);
@@ -95,8 +99,44 @@ namespace AnyStore.UI
             //}
         }
 
+        public void SaveOrUpdate(Party entity)
+        {
+            var sql = @"MERGE INTO Parties
+               USING (VALUES (@Id,@Type,@Name,@Email,@PhoneNumber,@Address,@Added_Date,@Added_By_Id,@IsActive)) AS
+                            s(Id,Type,Name,Email,PhoneNumber,Address,Added_Date,Added_By_Id,IsActive)
+                ON Parties.id = s.id
+                WHEN MATCHED THEN
+                    UPDATE
+                    SET     Type=s.Type
+                            ,Name=s.Name
+                            ,Email=s.Email
+                            ,PhoneNumber=s.PhoneNumber
+                            ,Address=s.Address
+                            ,Added_Date=s.Added_Date
+                            ,Added_By_Id=s.Added_By_Id
+                            ,IsActive=s.IsActive
 
-      
+                WHEN NOT MATCHED THEN
+                    INSERT (Type,Name,Email,PhoneNumber,Address,Added_Date,Added_By_Id,IsActive)
+                    VALUES (s.Type,s.Name,s.Email,s.PhoneNumber,s.Address,s.Added_Date,s.Added_By_Id,s.IsActive);";
+
+            object[] parameters = {
+                new SqlParameter("@id", entity.Id),
+                new SqlParameter("@Type", entity.Type),
+                new SqlParameter("@Name", entity.Name),
+                new SqlParameter("@Email", entity.Email),
+                new SqlParameter("@PhoneNumber", entity.PhoneNumber),
+                new SqlParameter("@Address", entity.Address),
+                new SqlParameter("@Added_Date", entity.Added_Date),
+                new SqlParameter("@Added_By_Id", '1'), // TO:DO extend to stamp user session id
+                new SqlParameter("@IsActive", entity.IsActive) 
+                
+            };
+            db.Database.ExecuteSqlCommand(sql, parameters);
+        }
+
+
+
         public void Clear()
         {
             txtDeaCustID.Text = "";
@@ -160,26 +200,22 @@ namespace AnyStore.UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //Get the id of the user to be deleted from form
-            dc.id = int.Parse(txtDeaCustID.Text);
+            
 
-            //Create boolean variable to check wheteher the dealer or customer is deleted or not
-            bool success = dcDal.Delete(dc);
+            Party party = new Party();
+            party.Id = txtDeaCustID.Text.Equals("") ? 0 : int.Parse(txtDeaCustID.Text);
+            party.Type = cmbDeaCust.Text;
+            party.Name = txtName.Text;
+            party.Email = txtEmail.Text;
+            party.PhoneNumber = txtContact.Text;
+            party.Address = txtAddress.Text;
+            party.Added_Date = DateTime.Now;
+            party.IsActive = false;
 
-            if(success==true)
-            {
-                //Dealer or Customer Deleted Successfully
-                MessageBox.Show("Dealer or Customer Deleted Successfully");
-                Clear();
-                //Refresh the Data Grid View
-                DataTable dt = dcDal.Select();
-                dgvDeaCust.DataSource = dt;
-            }
-            else
-            {
-                //Dealer or Customer Failed to Delete
-                MessageBox.Show("Failed to Delete Dealer or Customer");
-            }
+            SaveOrUpdate(party);
+            reloadForm();
+
+
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -189,15 +225,15 @@ namespace AnyStore.UI
 
             if(keyword!=null)
             {
-                //Search the Dealer or Customer
-                DataTable dt = dcDal.Search(keyword);
-                dgvDeaCust.DataSource = dt;
+
+                var fileteredPartyResult = parties.Where(x => (x.Name.Contains(keyword)&& x.IsActive));
+
+                dgvDeaCust.DataSource = DataSetLinqOperators.ToDataTable<Party>(fileteredPartyResult); ;
             }
             else
             {
-                //Show all the Dealer or Customer
-                DataTable dt = dcDal.Select();
-                dgvDeaCust.DataSource = dt;
+
+                dgvDeaCust.DataSource = Partiesdt;
             }
         }
     }

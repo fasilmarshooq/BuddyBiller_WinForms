@@ -15,10 +15,10 @@ namespace BB.System.Common
 {
     
     
-    public partial class BuddyBiller : DbContext
+    public partial class BuddyBillerRepository : DbContext
     {
-        public BuddyBiller()
-            : base("name=BuddyBiller")
+        public BuddyBillerRepository()
+            : base("name=BuddyBillerRepository")
         {
         }
     
@@ -33,5 +33,6 @@ namespace BB.System.Common
         public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<PartyTypeConfig> PartyTypeConfigs { get; set; }
     }
 }

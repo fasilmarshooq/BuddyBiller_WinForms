@@ -7,21 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BB.System.Common
+using System;
+using System.Collections.Generic;
+
+public partial class Product
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public Nullable<decimal> Rate { get; set; }
-        public Nullable<decimal> Qty { get; set; }
-        public Nullable<System.DateTime> Added_Date { get; set; }
-    
-        public virtual ProductType ProductTypeId { get; set; }
-        public virtual User Added_By { get; set; }
-    }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public Nullable<decimal> Rate { get; set; }
+    public Nullable<decimal> Qty { get; set; }
+    public Nullable<System.DateTime> Added_Date { get; set; }
+
+    public virtual ProductType ProductType { get; set; }
+    public virtual User Added_By { get; set; }
 }

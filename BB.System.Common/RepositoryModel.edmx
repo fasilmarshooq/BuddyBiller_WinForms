@@ -11,7 +11,8 @@
     <EntitySet Name="Products" EntityType="RepositoryModel.Store.Products" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TransactionDetails" EntityType="RepositoryModel.Store.TransactionDetails" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Transactions" EntityType="RepositoryModel.Store.Transactions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="users" EntityType="RepositoryModel.Store.users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="RepositoryModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartyTypeConfigs" EntityType="RepositoryModel.Store.PartyTypeConfigs" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProductProductType" Association="RepositoryModel.Store.ProductProductType">
       <End Role="Product" EntitySet="Products" />
       <End Role="ProductType" EntitySet="ProductTypes" />
@@ -20,76 +21,97 @@
       <End Role="TransactionDetail" EntitySet="TransactionDetails" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
+    <AssociationSet Name="TransactionTransactionDetail" Association="RepositoryModel.Store.TransactionTransactionDetail">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="Transactionuser" Association="RepositoryModel.Store.Transactionuser">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="user" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Partyuser" Association="RepositoryModel.Store.Partyuser">
+      <End Role="Party" EntitySet="Parties" />
+      <End Role="user" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Productuser" Association="RepositoryModel.Store.Productuser">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="user" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="ProductTypeuser" Association="RepositoryModel.Store.ProductTypeuser">
+      <End Role="ProductType" EntitySet="ProductTypes" />
+      <End Role="user" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="TransactionParty" Association="RepositoryModel.Store.TransactionParty">
+      <End Role="Transaction" EntitySet="Transactions" />
+      <End Role="Party" EntitySet="Parties" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ProductTypes">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" Nullable="true" MaxLength="50" />
     <Property Name="Description" Type="varchar(max)" Nullable="true" />
-    <Property Name="added_date" Type="datetime" Nullable="true" />
-    <Property Name="added_by" Type="int" Nullable="true" />
+    <Property Name="Added_Date" Type="datetime" Nullable="true" />
+    <Property Name="Added_By_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Parties">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type" Type="varchar" Nullable="true" MaxLength="50" />
     <Property Name="Name" Type="varchar" Nullable="true" MaxLength="150" />
     <Property Name="Email" Type="varchar" Nullable="true" MaxLength="150" />
     <Property Name="PhoneNumber" Type="varchar" Nullable="true" MaxLength="15" />
     <Property Name="Address" Type="varchar(max)" Nullable="true" />
     <Property Name="Added_Date" Type="datetime" Nullable="true" />
-    <Property Name="Added_By" Type="int" Nullable="true" />
-    <Property Name="Modifed_Date" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Modified_By" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Added_By_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="description" Type="varchar(max)" Nullable="true" />
-    <Property Name="rate" Type="decimal" Nullable="true" Precision="18" Scale="2" />
-    <Property Name="qty" Type="decimal" Nullable="true" Precision="18" Scale="2" />
-    <Property Name="added_date" Type="datetime" Nullable="true" />
-    <Property Name="added_by" Type="int" Nullable="true" />
-    <Property Name="ProductType_id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Description" Type="varchar(max)" Nullable="true" />
+    <Property Name="Rate" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Qty" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Added_Date" Type="datetime" Nullable="true" />
+    <Property Name="ProductType_Id" Type="int" Nullable="false" />
+    <Property Name="Added_By_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TransactionDetails">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="rate" Type="decimal" Nullable="true" Precision="18" Scale="2" />
-    <Property Name="qty" Type="decimal" Nullable="true" Precision="18" Scale="2" />
-    <Property Name="total" Type="decimal" Nullable="true" Precision="18" Scale="2" />
-    <Property Name="dea_cust_id" Type="int" Nullable="true" />
-    <Property Name="added_date" Type="datetime" Nullable="true" />
-    <Property Name="added_by" Type="int" Nullable="true" />
-    <Property Name="Product_id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rate" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Qty" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Total" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Product_Id" Type="int" Nullable="false" />
+    <Property Name="Transaction_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Transactions">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="type" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="dea_cust_id" Type="int" Nullable="true" />
-    <Property Name="grandTotal" Type="decimal" Nullable="true" Precision="18" Scale="2" />
-    <Property Name="transaction_date" Type="datetime" Nullable="true" />
-    <Property Name="tax" Type="decimal" Nullable="true" Precision="18" Scale="2" />
-    <Property Name="discount" Type="decimal" Nullable="true" Precision="18" Scale="2" />
-    <Property Name="added_by" Type="int" Nullable="true" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Transaction_date" Type="datetime" Nullable="true" />
+    <Property Name="Tax" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Discount" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="GrandTotal" Type="decimal" Nullable="true" Precision="18" Scale="2" />
+    <Property Name="Added_By_Id" Type="int" Nullable="false" />
+    <Property Name="Party_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="users">
+  <EntityType Name="Users">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="first_name" Type="varchar" Nullable="true" MaxLength="50" />
     <Property Name="last_name" Type="varchar" Nullable="true" MaxLength="50" />
     <Property Name="email" Type="varchar" Nullable="true" MaxLength="150" />
@@ -99,18 +121,23 @@
     <Property Name="address" Type="varchar(max)" Nullable="true" />
     <Property Name="gender" Type="varchar" Nullable="true" MaxLength="10" />
     <Property Name="user_type" Type="varchar" Nullable="true" MaxLength="15" />
-    <Property Name="added_date" Type="datetime" Nullable="true" />
-    <Property Name="added_by" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PartyTypeConfigs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="ProductProductType">
     <End Role="Product" Type="RepositoryModel.Store.Products" Multiplicity="*" />
     <End Role="ProductType" Type="RepositoryModel.Store.ProductTypes" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="ProductType">
-        <PropertyRef Name="id" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Product">
-        <PropertyRef Name="ProductType_id" />
+        <PropertyRef Name="ProductType_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -119,10 +146,82 @@
     <End Role="Product" Type="RepositoryModel.Store.Products" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Product">
-        <PropertyRef Name="id" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="TransactionDetail">
-        <PropertyRef Name="Product_id" />
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransactionTransactionDetail">
+    <End Role="Transaction" Type="RepositoryModel.Store.Transactions" Multiplicity="1" />
+    <End Role="TransactionDetail" Type="RepositoryModel.Store.TransactionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransactionDetail">
+        <PropertyRef Name="Transaction_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Transactionuser">
+    <End Role="Transaction" Type="RepositoryModel.Store.Transactions" Multiplicity="*" />
+    <End Role="user" Type="RepositoryModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="Added_By_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Partyuser">
+    <End Role="Party" Type="RepositoryModel.Store.Parties" Multiplicity="*" />
+    <End Role="user" Type="RepositoryModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Party">
+        <PropertyRef Name="Added_By_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Productuser">
+    <End Role="Product" Type="RepositoryModel.Store.Products" Multiplicity="*" />
+    <End Role="user" Type="RepositoryModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Added_By_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductTypeuser">
+    <End Role="ProductType" Type="RepositoryModel.Store.ProductTypes" Multiplicity="*" />
+    <End Role="user" Type="RepositoryModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductType">
+        <PropertyRef Name="Added_By_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransactionParty">
+    <End Role="Transaction" Type="RepositoryModel.Store.Transactions" Multiplicity="*" />
+    <End Role="Party" Type="RepositoryModel.Store.Parties" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="Party_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -152,6 +251,7 @@
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Added_Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Added_By" Relationship="RepositoryModel.Partyuser" FromRole="Party" ToRole="user" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -163,7 +263,7 @@
           <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Qty" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Added_Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="ProductTypeId" Relationship="RepositoryModel.ProductProductType" FromRole="Product" ToRole="ProductType" />
+          <NavigationProperty Name="ProductType" Relationship="RepositoryModel.ProductProductType" FromRole="Product" ToRole="ProductType" />
           <NavigationProperty Name="Added_By" Relationship="RepositoryModel.Productuser" FromRole="Product" ToRole="user" />
         </EntityType>
         <EntityType Name="TransactionDetail">
@@ -204,10 +304,8 @@
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="user_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="added_date" Type="DateTime" Precision="3" />
-          <Property Name="added_by" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="BuddyBiller" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BuddyBillerRepository" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ProductTypes" EntityType="RepositoryModel.ProductType" />
           <EntitySet Name="Parties" EntityType="Self.Party" />
           <EntitySet Name="Products" EntityType="Self.Product" />
@@ -246,6 +344,7 @@
             <End Role="Transaction" EntitySet="Transactions" />
             <End Role="Party" EntitySet="Parties" />
           </AssociationSet>
+          <EntitySet Name="PartyTypeConfigs" EntityType="RepositoryModel.PartyTypeConfig" />
         </EntityContainer>
         <Association Name="ProductProductType">
           <End Type="RepositoryModel.Product" Role="Product" Multiplicity="1" />
@@ -279,61 +378,69 @@
           <End Type="RepositoryModel.Transaction" Role="Transaction" Multiplicity="1" />
           <End Type="RepositoryModel.Party" Role="Party" Multiplicity="1" />
         </Association>
+        <EntityType Name="PartyTypeConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="RepositoryModelStoreContainer" CdmEntityContainer="BuddyBiller">
+  <EntityContainerMapping StorageEntityContainer="RepositoryModelStoreContainer" CdmEntityContainer="BuddyBillerRepository">
     <EntitySetMapping Name="ProductTypes">
       <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.ProductType)">
         <MappingFragment StoreEntitySet="ProductTypes">
-          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Added_Date" ColumnName="added_date" />
+          <ScalarProperty Name="Added_Date" ColumnName="Added_Date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parties">
       <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.Party)">
         <MappingFragment StoreEntitySet="Parties">
-          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Added_Date" ColumnName="Added_Date" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.Product)">
         <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="Id" ColumnName="id" />
-          <ScalarProperty Name="Name" ColumnName="name" />
-          <ScalarProperty Name="Description" ColumnName="description" />
-          <ScalarProperty Name="Rate" ColumnName="rate" />
-          <ScalarProperty Name="Qty" ColumnName="qty" />
-          <ScalarProperty Name="Added_Date" ColumnName="added_date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Added_Date" ColumnName="Added_Date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TransactionDetails">
       <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.TransactionDetail)">
         <MappingFragment StoreEntitySet="TransactionDetails">
-          <ScalarProperty Name="Id" ColumnName="id" />
-          <ScalarProperty Name="Rate" ColumnName="rate" />
-          <ScalarProperty Name="Qty" ColumnName="qty" />
-          <ScalarProperty Name="Total" ColumnName="total" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.User)">
-        <MappingFragment StoreEntitySet="users">
-          <ScalarProperty Name="Id" ColumnName="id" />
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="first_name" ColumnName="first_name" />
           <ScalarProperty Name="last_name" ColumnName="last_name" />
           <ScalarProperty Name="email" ColumnName="email" />
@@ -343,39 +450,93 @@
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="gender" ColumnName="gender" />
           <ScalarProperty Name="user_type" ColumnName="user_type" />
-          <ScalarProperty Name="added_date" ColumnName="added_date" />
-          <ScalarProperty Name="added_by" ColumnName="added_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.Transaction)">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Transaction_date" ColumnName="Transaction_date" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartyTypeConfigs">
+      <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.PartyTypeConfig)">
+        <MappingFragment StoreEntitySet="PartyTypeConfigs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="ProductProductType" TypeName="RepositoryModel.ProductProductType" StoreEntitySet="Products">
       <EndProperty Name="ProductType">
-        <ScalarProperty Name="Id" ColumnName="ProductType_id" />
+        <ScalarProperty Name="Id" ColumnName="ProductType_Id" />
       </EndProperty>
       <EndProperty Name="Product">
-        <ScalarProperty Name="Id" ColumnName="id" />
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="TransactionDetailProduct" TypeName="RepositoryModel.TransactionDetailProduct" StoreEntitySet="TransactionDetails">
       <EndProperty Name="Product">
-        <ScalarProperty Name="Id" ColumnName="Product_id" />
+        <ScalarProperty Name="Id" ColumnName="Product_Id" />
       </EndProperty>
       <EndProperty Name="TransactionDetail">
-        <ScalarProperty Name="Id" ColumnName="id" />
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-          <EntitySetMapping Name="Transactions">
-            <EntityTypeMapping TypeName="IsTypeOf(RepositoryModel.Transaction)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-              <MappingFragment StoreEntitySet="Transactions">
-                <ScalarProperty Name="Id" ColumnName="id" />
-                <ScalarProperty Name="Type" ColumnName="type" />
-                <ScalarProperty Name="GrandTotal" ColumnName="grandTotal" />
-                <ScalarProperty Name="Transaction_date" ColumnName="transaction_date" />
-                <ScalarProperty Name="Tax" ColumnName="tax" />
-                <ScalarProperty Name="Discount" ColumnName="discount" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+    <AssociationSetMapping Name="TransactionTransactionDetail" TypeName="RepositoryModel.TransactionTransactionDetail" StoreEntitySet="TransactionDetails">
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="Id" ColumnName="Transaction_Id" />
+      </EndProperty>
+      <EndProperty Name="TransactionDetail">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Transactionuser" TypeName="RepositoryModel.Transactionuser" StoreEntitySet="Transactions">
+      <EndProperty Name="user">
+        <ScalarProperty Name="Id" ColumnName="Added_By_Id" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Partyuser" TypeName="RepositoryModel.Partyuser" StoreEntitySet="Parties">
+      <EndProperty Name="user">
+        <ScalarProperty Name="Id" ColumnName="Added_By_Id" />
+      </EndProperty>
+      <EndProperty Name="Party">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Productuser" TypeName="RepositoryModel.Productuser" StoreEntitySet="Products">
+      <EndProperty Name="user">
+        <ScalarProperty Name="Id" ColumnName="Added_By_Id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductTypeuser" TypeName="RepositoryModel.ProductTypeuser" StoreEntitySet="ProductTypes">
+      <EndProperty Name="user">
+        <ScalarProperty Name="Id" ColumnName="Added_By_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductType">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TransactionParty" TypeName="RepositoryModel.TransactionParty" StoreEntitySet="Transactions">
+      <EndProperty Name="Party">
+        <ScalarProperty Name="Id" ColumnName="Party_Id" />
+      </EndProperty>
+      <EndProperty Name="Transaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
