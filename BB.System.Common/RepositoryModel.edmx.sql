@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/08/2019 12:20:57
--- Generated from EDMX file: C:\Users\fasil.m\Source\Repos\BuddyBiller\BB.System.Common\RepositoryModel.edmx
+-- Date Created: 12/08/2019 19:22:12
+-- Generated from EDMX file: D:\SherifTraders\BB.System.Common\RepositoryModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -22,6 +22,24 @@ IF OBJECT_ID(N'[dbo].[FK_ProductProductType]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_TransactionDetailProduct]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TransactionDetails] DROP CONSTRAINT [FK_TransactionDetailProduct];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TransactionTransactionDetail]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TransactionDetails] DROP CONSTRAINT [FK_TransactionTransactionDetail];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Transactionuser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Transactions] DROP CONSTRAINT [FK_Transactionuser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Partyuser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Parties] DROP CONSTRAINT [FK_Partyuser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Productuser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_Productuser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductTypeuser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProductTypes] DROP CONSTRAINT [FK_ProductTypeuser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TransactionParty]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Transactions] DROP CONSTRAINT [FK_TransactionParty];
 GO
 
 -- --------------------------------------------------
@@ -43,8 +61,11 @@ GO
 IF OBJECT_ID(N'[dbo].[Transactions]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Transactions];
 GO
-IF OBJECT_ID(N'[dbo].[users]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[users];
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[PartyTypeConfigs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PartyTypeConfigs];
 GO
 
 -- --------------------------------------------------
@@ -57,6 +78,7 @@ CREATE TABLE [dbo].[ProductTypes] (
     [Name] varchar(50)  NULL,
     [Description] varchar(max)  NULL,
     [Added_Date] datetime  NULL,
+    [IsActive] bit  NOT NULL,
     [Added_By_Id] int  NOT NULL
 );
 GO

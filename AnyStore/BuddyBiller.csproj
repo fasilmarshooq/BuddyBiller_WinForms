@@ -99,11 +99,11 @@
     <Compile Include="UI\frmAdminDashboard.Designer.cs">
       <DependentUpon>frmAdminDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\frmCategories.cs">
+    <Compile Include="UI\frmProductTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\frmCategories.Designer.cs">
-      <DependentUpon>frmCategories.cs</DependentUpon>
+    <Compile Include="UI\frmProductTypes.Designer.cs">
+      <DependentUpon>frmProductTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmDeaCust.cs">
       <SubType>Form</SubType>
@@ -158,8 +158,8 @@
     <EmbeddedResource Include="UI\frmAdminDashboard.resx">
       <DependentUpon>frmAdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmCategories.resx">
-      <DependentUpon>frmCategories.cs</DependentUpon>
+    <EmbeddedResource Include="UI\frmProductTypes.resx">
+      <DependentUpon>frmProductTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmDeaCust.resx">
       <DependentUpon>frmDeaCust.cs</DependentUpon>

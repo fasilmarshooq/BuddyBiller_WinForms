@@ -61,5 +61,17 @@ namespace AnyStore
             frmInventory inventory = new frmInventory();
             inventory.Show();
         }
+
+        private void productToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProducts product = new frmProducts();
+            product.Show();
+        }
+
+        private void productTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProductTypes productTypes=new frmProductTypes();
+            productTypes.Show();
+        }
     }
 }

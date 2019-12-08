@@ -16,6 +16,8 @@ namespace AnyStore.UI
 {
     public partial class frmPurchaseAndSales : Form
     {
+        IQueryable<Party> parties;
+        BuddyBillerRepository db = new BuddyBillerRepository();
         public frmPurchaseAndSales()
         {
             InitializeComponent();
@@ -45,6 +47,7 @@ namespace AnyStore.UI
             transactionDT.Columns.Add("Quantity");
             transactionDT.Columns.Add("Total");
             initializeFields();
+             parties = db.Parties.Select(X => X).Where(x=>x.IsActive);
         }
 
         private void initializeFields()
@@ -72,13 +75,15 @@ namespace AnyStore.UI
             }
 
             //Write the code to get the details and set the value on text boxes
-            DeaCustBLL dc = dcDAL.SearchDealerCustomerForTransaction(keyword);
+            //DeaCustBLL dc = dcDAL.SearchDealerCustomerForTransaction(keyword);
+
+            var fileteredPartyResult = parties.Where(x => (x.Name.Contains(keyword)&& x.IsActive)).SingleOrDefault();
 
             //Now transfer or set the value from DeCustBLL to textboxes
-            txtName.Text = dc.name;
-            txtEmail.Text = dc.email;
-            txtContact.Text = dc.contact;
-            txtAddress.Text = dc.address;
+            txtName.Text = fileteredPartyResult.Name;
+            txtEmail.Text = fileteredPartyResult.Email;
+            txtContact.Text = fileteredPartyResult.PhoneNumber;
+            txtAddress.Text = fileteredPartyResult.Address;
         }
 
         private void txtSearchProduct_TextChanged(object sender, EventArgs e)
