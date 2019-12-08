@@ -81,6 +81,7 @@
     <Property Name="Rate" Type="decimal" Nullable="true" Precision="18" Scale="2" />
     <Property Name="Qty" Type="decimal" Nullable="true" Precision="18" Scale="2" />
     <Property Name="Added_Date" Type="datetime" Nullable="true" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="ProductType_Id" Type="int" Nullable="false" />
     <Property Name="Added_By_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -267,6 +268,7 @@
           <Property Name="Added_Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ProductType" Relationship="RepositoryModel.ProductProductType" FromRole="Product" ToRole="ProductType" />
           <NavigationProperty Name="Added_By" Relationship="RepositoryModel.Productuser" FromRole="Product" ToRole="user" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="TransactionDetail">
           <Key>
@@ -427,6 +429,7 @@
           <ScalarProperty Name="Rate" ColumnName="Rate" />
           <ScalarProperty Name="Qty" ColumnName="Qty" />
           <ScalarProperty Name="Added_Date" ColumnName="Added_Date" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
