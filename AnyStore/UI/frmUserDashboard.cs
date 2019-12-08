@@ -73,5 +73,6 @@ namespace AnyStore
             frmProductTypes productTypes=new frmProductTypes();
             productTypes.Show();
         }
+      
     }
 }
