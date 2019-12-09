@@ -1,76 +1,81 @@
 ﻿using AnyStore.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BuddyBiller.Properties;
 
 namespace AnyStore
 {
-    public partial class frmUserDashboard : Form
+    public partial class FrmUserDashboard : Form
     {
-        public frmUserDashboard()
+        FrmProductTypes productTypes;
+        private FrmProducts product;
+
+
+        public FrmUserDashboard()
         {
             InitializeComponent();
+            this.IsMdiContainer = true;
         }
 
         //Set a public static method to specify whether the form is purchase or sales
         public static string transactionType;
         private void frmUserDashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmLogin login = new frmLogin();
+            FrmLogin login = new FrmLogin();
             login.Show();
             this.Hide();
         }
 
         private void frmUserDashboard_Load(object sender, EventArgs e)
         {
-            lblLoggedInUser.Text = frmLogin.loggedIn;
+            lblLoggedInUser.Text = FrmLogin.loggedIn;
         }
 
         private void dealerAndCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDeaCust DeaCust = new frmDeaCust();
-            DeaCust.Show();
+            FrmDealCust dealCust = new FrmDealCust();
+            dealCust.Show();
         }
 
         private void purchaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //set value on transactionType static method
             transactionType = "Purchase";
-            frmPurchaseAndSales purchase = new frmPurchaseAndSales();
+            FrmPurchaseAndSales purchase = new FrmPurchaseAndSales();
+            purchase.MdiParent = this;
             purchase.Show();
-            
         }
 
         private void salesFormsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Set the value to transacionType method to sales
             transactionType = "Sales";
-            frmPurchaseAndSales sales = new frmPurchaseAndSales();
+            FrmPurchaseAndSales sales = new FrmPurchaseAndSales();
             sales.Show();
             
         }
 
-        private void inventoryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmInventory inventory = new frmInventory();
-            inventory.Show();
-        }
-
         private void productToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProducts product = new frmProducts();
+            if (product == null)
+            {
+                product = new FrmProducts();
+                product.MdiParent = this;
+            }
+
+            product.WindowState = FormWindowState.Maximized;
             product.Show();
         }
 
         private void productTypeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProductTypes productTypes=new frmProductTypes();
+            if (productTypes == null)
+            {
+                productTypes = new FrmProductTypes {MdiParent = this};
+            }
+
+            productTypes.StartPosition = FormStartPosition.CenterParent;
+            productTypes.Text = Resources.FrmUserDashboard_productTypeToolStripMenuItem_Click_Product_Types;
             productTypes.Show();
         }
       

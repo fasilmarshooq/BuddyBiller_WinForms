@@ -1,40 +1,31 @@
-﻿using AnyStore.BLL;
-using AnyStore.DAL;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using BuddyBiller.BLL;
+using BuddyBiller.DAL;
+using BuddyBiller.Properties;
 
 namespace AnyStore.UI
 {
-    public partial class frmLogin : Form
+    public partial class FrmLogin : Form
     {
-        public frmLogin()
+        public FrmLogin()
         {
             InitializeComponent();
         }
 
-        loginBLL l = new loginBLL();
-        loginDAL dal = new loginDAL();
+        private readonly LoginBll l = new LoginBll();
+        private readonly LoginDal dal = new LoginDal();
         public static string loggedIn;
 
-        private void pboxClose_Click(object sender, EventArgs e)
+        private void PboxClose_Click(object sender, EventArgs e)
         {
             //Code to close this form
-            this.Close();
+            Close();
         }
 
         private void LoginForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Login();
-            }
+            if (e.KeyCode == Keys.Enter) Login();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -44,53 +35,51 @@ namespace AnyStore.UI
 
         private void Login()
         {
-            l.username = txtUsername.Text.Trim();
-            l.password = txtPassword.Text.Trim();
-            l.user_type = cmbUserType.Text.Trim();
+            l.Username = txtUsername.Text.Trim();
+            l.Password = txtPassword.Text.Trim();
+            l.UserType = cmbUserType.Text.Trim();
 
             //Checking the login credentials
-            bool sucess = dal.loginCheck(l);
-            if (sucess == true)
+            var sucess = dal.loginCheck(l);
+            if (sucess)
             {
                 //Login Successfull
                 //MessageBox.Show("Login Successful.");
-                loggedIn = l.username;
+                loggedIn = l.Username;
                 //Need to open Respective Forms based on User Type
-                switch (l.user_type)
+                switch (l.UserType)
                 {
                     case "Admin":
-                        {
-                            //Display Admin Dashboard
-                            frmAdminDashboard admin = new frmAdminDashboard();
-                            admin.Show();
-                            this.Hide();
-                        }
+                    {
+                        //Display Admin Dashboard
+                        var admin = new FrmAdminDashboard();
+                        admin.Show();
+                        Hide();
+                    }
                         break;
 
                     case "User":
-                        {
-                            //Display User Dashboard
-                            frmUserDashboard user = new frmUserDashboard();
-                            user.Show();
-                            this.Hide();
-                        }
+                    {
+                        //Display User Dashboard
+                        var user = new FrmUserDashboard();
+                        user.Show();
+                        Hide();
+                    }
                         break;
 
                     default:
-                        {
-                            //Display an error message
-                            MessageBox.Show("Invalid User Type.");
-                        }
+                    {
+                        //Display an error message
+                        MessageBox.Show(Resources.frmLogin_Login_Invalid_User_Type_);
+                    }
                         break;
                 }
             }
             else
             {
                 //login Failed
-                MessageBox.Show("Login Failed. Try Again");
+                MessageBox.Show(Resources.frmLogin_Login_Login_Failed__Try_Again);
             }
         }
-
-       
     }
 }

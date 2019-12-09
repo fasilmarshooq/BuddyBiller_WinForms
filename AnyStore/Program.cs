@@ -1,11 +1,8 @@
-﻿using AnyStore.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using AnyStore.UI;
 
-namespace AnyStore
+namespace BuddyBiller
 {
     static class Program
     {
@@ -17,7 +14,7 @@ namespace AnyStore
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new FrmLogin());
         }
     }
 }

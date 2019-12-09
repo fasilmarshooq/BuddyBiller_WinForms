@@ -1,19 +1,13 @@
-﻿using AnyStore.BLL;
-using BB.System.Common;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BB.System.Common;
+using BuddyBiller.BLL;
 
-
-namespace AnyStore.DAL
+namespace BuddyBiller.DAL
 {
-    class categoriesDAL
+    class CategoriesDal
     {
         //Static String Method for Database Connection String
 
@@ -52,7 +46,7 @@ namespace AnyStore.DAL
         }
         #endregion
         #region Insert New CAtegory
-        public bool Insert(categoriesBLL c)
+        public bool Insert(CategoriesBll c)
         {
             //Creating A Boolean VAriable and set its default value to false
             bool isSucces = false;
@@ -68,10 +62,10 @@ namespace AnyStore.DAL
                 //Creating SQL Command to pass values in our query
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //Passing Values through parameter
-                cmd.Parameters.AddWithValue("@title", c.title);
-                cmd.Parameters.AddWithValue("@description", c.description);
-                cmd.Parameters.AddWithValue("@added_date", c.added_date);
-                cmd.Parameters.AddWithValue("@added_by", c.added_by);
+                cmd.Parameters.AddWithValue("@title", c.Title);
+                cmd.Parameters.AddWithValue("@description", c.Description);
+                cmd.Parameters.AddWithValue("@added_date", c.AddedDate);
+                cmd.Parameters.AddWithValue("@added_by", c.AddedBy);
 
                 //Open Database Connection
                 conn.Open();
@@ -106,7 +100,7 @@ namespace AnyStore.DAL
         }
         #endregion
         #region Update Method
-        public bool Update(categoriesBLL c)
+        public bool Update(CategoriesBll c)
         {
             //Creating Boolean variable and set its default value to false
             bool isSuccess = false;
@@ -123,11 +117,11 @@ namespace AnyStore.DAL
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 //Passing Value using cmd
-                cmd.Parameters.AddWithValue("@title", c.title);
-                cmd.Parameters.AddWithValue("@description", c.description);
-                cmd.Parameters.AddWithValue("@added_date", c.added_date);
-                cmd.Parameters.AddWithValue("@added_by", c.added_by);
-                cmd.Parameters.AddWithValue("@id", c.id);
+                cmd.Parameters.AddWithValue("@title", c.Title);
+                cmd.Parameters.AddWithValue("@description", c.Description);
+                cmd.Parameters.AddWithValue("@added_date", c.AddedDate);
+                cmd.Parameters.AddWithValue("@added_by", c.AddedBy);
+                cmd.Parameters.AddWithValue("@id", c.Id);
 
                 //Open DAtabase Connection
                 conn.Open();
@@ -160,7 +154,7 @@ namespace AnyStore.DAL
         }
         #endregion
         #region Delete Category Method
-        public bool Delete(categoriesBLL c)
+        public bool Delete(CategoriesBll c)
         {
             //Create a Boolean variable and set its value to false
             bool isSuccess = false;
@@ -174,7 +168,7 @@ namespace AnyStore.DAL
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //Passing the value using cmd
-                cmd.Parameters.AddWithValue("@id", c.id);
+                cmd.Parameters.AddWithValue("@id", c.Id);
 
                 //Open SqlConnection
                 conn.Open();

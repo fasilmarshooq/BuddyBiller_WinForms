@@ -1,22 +1,15 @@
-﻿using AnyStore.BLL;
-using BB.System.Common;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BuddyBiller.BLL;
 
-namespace AnyStore.DAL
+namespace BuddyBiller.DAL
 {
-    class loginDAL
+    class LoginDal
     {
 
 
-        public bool loginCheck(loginBLL l)
+        public bool loginCheck(LoginBll l)
         {
             //Create a boolean variable and set its value to false and return it
             bool isSuccess = false;
@@ -27,20 +20,15 @@ namespace AnyStore.DAL
                 {
 
                     var usercontext = from user in db.Users
-                                      where user.username.Equals(l.username)
-                                      && user.password.Equals(l.password)
-                                      && user.user_type.Equals(l.user_type)
+                                      where user.username.Equals(l.Username)
+                                      && user.password.Equals(l.Password)
+                                      && user.user_type.Equals(l.UserType)
                                       select user;
 
                     if (usercontext.Any())
                     {
                         //Login Sucessful
                         isSuccess = true;
-                    }
-                    else
-                    {
-                        //Login Failed
-                        isSuccess = false;
                     }
                 }
 

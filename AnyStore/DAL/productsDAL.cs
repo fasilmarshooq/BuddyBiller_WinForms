@@ -1,26 +1,22 @@
-﻿using AnyStore.BLL;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BuddyBiller.BLL;
 
-namespace AnyStore.DAL
+namespace BuddyBiller.DAL
 {
-    class productsDAL
+    class ProductsDal
     {
         //Creating STATI String Method for DB Connection
-        static string myconnstrng = ConfigurationManager.ConnectionStrings["connstrng"].ConnectionString;
+        static string _myconnstrng = ConfigurationManager.ConnectionStrings["connstrng"].ConnectionString;
 
         #region Select method for Product Module
         public DataTable Select()
         {
             //Create Sql Connection to connect Databaes
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             //DAtaTable to hold the data from database
             DataTable dt = new DataTable();
@@ -54,13 +50,13 @@ namespace AnyStore.DAL
         }
         #endregion
         #region Method to Insert Product in database
-        public bool Insert(productsBLL p)
+        public bool Insert(ProductsBll p)
         {
             //Creating Boolean Variable and set its default value to false
             bool isSuccess = false;
 
             //Sql Connection for DAtabase
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             try
             {
@@ -71,13 +67,13 @@ namespace AnyStore.DAL
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 //Passign the values through parameters
-                cmd.Parameters.AddWithValue("@name", p.name);
-                cmd.Parameters.AddWithValue("@category", p.category);
-                cmd.Parameters.AddWithValue("@description", p.description);
-                cmd.Parameters.AddWithValue("@rate", p.rate);
-                cmd.Parameters.AddWithValue("@qty", p.qty);
-                cmd.Parameters.AddWithValue("@added_date", p.added_date);
-                cmd.Parameters.AddWithValue("@added_by", p.added_by);
+                cmd.Parameters.AddWithValue("@name", p.Name);
+                cmd.Parameters.AddWithValue("@category", p.Category);
+                cmd.Parameters.AddWithValue("@description", p.Description);
+                cmd.Parameters.AddWithValue("@rate", p.Rate);
+                cmd.Parameters.AddWithValue("@qty", p.Qty);
+                cmd.Parameters.AddWithValue("@added_date", p.AddedDate);
+                cmd.Parameters.AddWithValue("@added_by", p.AddedBy);
 
                 //Opening the Database connection
                 conn.Open();
@@ -109,13 +105,13 @@ namespace AnyStore.DAL
         }
         #endregion
         #region Method to Update Product in Database
-        public bool Update(productsBLL p)
+        public bool Update(ProductsBll p)
         {
             //create a boolean variable and set its initial value to false
             bool isSuccess = false;
 
             //Create SQL Connection for DAtabase
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             try
             {
@@ -125,14 +121,14 @@ namespace AnyStore.DAL
                 //Create SQL Cmmand to pass the value to query
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //Passing the values using parameters and cmd
-                cmd.Parameters.AddWithValue("@name", p.name);
-                cmd.Parameters.AddWithValue("@category", p.category);
-                cmd.Parameters.AddWithValue("@description", p.description);
-                cmd.Parameters.AddWithValue("@rate", p.rate);
-                cmd.Parameters.AddWithValue("@qty", p.qty);
-                cmd.Parameters.AddWithValue("@added_date", p.added_date);
-                cmd.Parameters.AddWithValue("@added_by", p.added_by);
-                cmd.Parameters.AddWithValue("@id", p.id);
+                cmd.Parameters.AddWithValue("@name", p.Name);
+                cmd.Parameters.AddWithValue("@category", p.Category);
+                cmd.Parameters.AddWithValue("@description", p.Description);
+                cmd.Parameters.AddWithValue("@rate", p.Rate);
+                cmd.Parameters.AddWithValue("@qty", p.Qty);
+                cmd.Parameters.AddWithValue("@added_date", p.AddedDate);
+                cmd.Parameters.AddWithValue("@added_by", p.AddedBy);
+                cmd.Parameters.AddWithValue("@id", p.Id);
 
                 //Open the Database connection
                 conn.Open();
@@ -165,13 +161,13 @@ namespace AnyStore.DAL
         }
         #endregion
         #region Method to Delete Product from Database
-        public bool Delete(productsBLL p)
+        public bool Delete(ProductsBll p)
         {
             //Create Boolean Variable and Set its default value to false
             bool isSuccess = false;
 
             //SQL Connection for DB connection
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             try
             {
@@ -182,7 +178,7 @@ namespace AnyStore.DAL
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 //Passing the values using cmd
-                cmd.Parameters.AddWithValue("@id", p.id);
+                cmd.Parameters.AddWithValue("@id", p.Id);
 
                 //Open Database Connection
                 conn.Open();
@@ -216,7 +212,7 @@ namespace AnyStore.DAL
         public DataTable Search (string keywords)
         {
             //SQL Connection fro DB Connection
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
             //Creating DAtaTable to hold value from dAtabase
             DataTable dt = new DataTable();
 
@@ -248,12 +244,12 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO SEARCH PRODUCT IN TRANSACTION MODULE
-        public productsBLL GetProductsForTransaction(string keyword)
+        public ProductsBll GetProductsForTransaction(string keyword)
         {
             //Create an object of productsBLL and return it
-            productsBLL p = new productsBLL();
+            ProductsBll p = new ProductsBll();
             //SqlConnection
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
             //Datatable to store data temporarily
             DataTable dt = new DataTable();
 
@@ -273,9 +269,9 @@ namespace AnyStore.DAL
                 //If we have any values on dt then set the values to productsBLL
                 if(dt.Rows.Count>0)
                 {
-                    p.name = dt.Rows[0]["name"].ToString();
-                    p.rate = decimal.Parse(dt.Rows[0]["rate"].ToString());
-                    p.qty = decimal.Parse(dt.Rows[0]["qty"].ToString());
+                    p.Name = dt.Rows[0]["name"].ToString();
+                    p.Rate = decimal.Parse(dt.Rows[0]["rate"].ToString());
+                    p.Qty = decimal.Parse(dt.Rows[0]["qty"].ToString());
                 }
             }
             catch(Exception ex)
@@ -292,20 +288,20 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO GET PRODUCT ID BASED ON PRODUCT NAME
-        public productsBLL GetProductIDFromName(string ProductName)
+        public ProductsBll GetProductIdFromName(string productName)
         {
             //First Create an Object of DeaCust BLL and REturn it
-            productsBLL p = new productsBLL();
+            ProductsBll p = new ProductsBll();
 
             //SQL Conection here
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
             //Data TAble to Holdthe data temporarily
             DataTable dt = new DataTable();
 
             try
             {
                 //SQL Query to Get id based on Name
-                string sql = "SELECT id FROM tbl_products WHERE name='" + ProductName + "'";
+                string sql = "SELECT id FROM tbl_products WHERE name='" + productName + "'";
                 //Create the SQL Data Adapter to Execute the Query
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
 
@@ -316,7 +312,7 @@ namespace AnyStore.DAL
                 if (dt.Rows.Count > 0)
                 {
                     //Pass the value from dt to DeaCustBLL dc
-                    p.id = int.Parse(dt.Rows[0]["id"].ToString());
+                    p.Id = int.Parse(dt.Rows[0]["id"].ToString());
                 }
             }
             catch (Exception ex)
@@ -332,10 +328,10 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO GET CURRENT QUantity from the Database based on Product ID
-        public decimal GetProductQty(int ProductID)
+        public decimal GetProductQty(int productId)
         {
             //SQl Connection First
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
             //Create a Decimal Variable and set its default value to 0
             decimal qty = 0;
 
@@ -345,7 +341,7 @@ namespace AnyStore.DAL
             try
             {
                 //Write WQL Query to Get Quantity from Database
-                string sql = "SELECT qty FROM tbl_products WHERE id = "+ProductID;
+                string sql = "SELECT qty FROM tbl_products WHERE id = "+productId;
 
                 //Cerate A SqlCommand
                 SqlCommand cmd = new SqlCommand(sql, conn);
@@ -379,13 +375,13 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO UPDATE QUANTITY
-        public bool UpdateQuantity(int ProductID, decimal Qty)
+        public bool UpdateQuantity(int productId, decimal qty)
         {
             //Create a Boolean Variable and Set its value to false
             bool success = false;
 
             //SQl Connection to Connect Database
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             try
             {
@@ -395,8 +391,8 @@ namespace AnyStore.DAL
                 //Create SQL Command to Pass the calue into Queyr
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //Passing the VAlue trhough parameters
-                cmd.Parameters.AddWithValue("@qty", Qty);
-                cmd.Parameters.AddWithValue("@id", ProductID);
+                cmd.Parameters.AddWithValue("@qty", qty);
+                cmd.Parameters.AddWithValue("@id", productId);
 
                 //Open Database Connection
                 conn.Open();
@@ -428,24 +424,24 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO INCREASE PRODUCT
-        public bool IncreaseProduct(int ProductID, decimal IncreaseQty)
+        public bool IncreaseProduct(int productId, decimal increaseQty)
         {
             //Create a Boolean Variable and SEt its value to False
             bool success = false;
 
             //Create SQL Connection To Connect DAtabase
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             try
             {
                 //Get the Current Qty From dAtabase based on id
-                decimal currentQty = GetProductQty(ProductID);
+                decimal currentQty = GetProductQty(productId);
 
                 //Increase the Current Quantity by the qty purchased from Dealer
-                decimal NewQty = currentQty + IncreaseQty;
+                decimal newQty = currentQty + increaseQty;
 
                 //Update the Prudcty Quantity Now
-                success = UpdateQuantity(ProductID, NewQty);
+                success = UpdateQuantity(productId, newQty);
             }
             catch(Exception ex)
             {
@@ -459,23 +455,23 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO DECREASE PRODUCT
-        public bool DecreaseProduct(int ProductID, decimal Qty)
+        public bool DecreaseProduct(int productId, decimal qty)
         {
             //Create Boolean Variable and SEt its Value to false
             bool success = false;
 
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             try
             {
                 //Get the Current product Quantity
-                decimal currentQty = GetProductQty(ProductID);
+                decimal currentQty = GetProductQty(productId);
 
                 //Decrease the Product Quantity based on product sales
-                decimal NewQty = currentQty - Qty;
+                decimal newQty = currentQty - qty;
 
                 //Update Product in Database
-                success = UpdateQuantity(ProductID, NewQty);
+                success = UpdateQuantity(productId, newQty);
             }
             catch(Exception ex)
             {
@@ -492,7 +488,7 @@ namespace AnyStore.DAL
         public DataTable DisplayProductsByCategory(string category)
         {
             //Sql Connection First
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             DataTable dt = new DataTable();
 

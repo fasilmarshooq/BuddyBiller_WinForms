@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AnyStore.BLL
+namespace BuddyBiller.BLL
 {
-    class userBLL
+    class UserBll
     {
-        public int id { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string email { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string contact { get; set; }
-        public string address { get; set; }
-        public string gender { get; set; }
-        public string user_type { get; set; }
-        public DateTime added_date { get; set; }
-        public int added_by { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Contact { get; set; }
+        public string Address { get; set; }
+        public string Gender { get; set; }
+        public string UserType { get; set; }
+        public DateTime AddedDate { get; set; }
+        public int AddedBy { get; set; }
 
     }
 }

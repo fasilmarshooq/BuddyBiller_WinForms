@@ -114,4 +114,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="frmLogin_Login_Invalid_User_Type_" xml:space="preserve">
+    <value>Invalid User Type.</value>
+  </data>
+  <data name="frmLogin_Login_Login_Failed__Try_Again" xml:space="preserve">
+    <value>Login Failed. Try Again</value>
+  </data>
+  <data name="frmProducts_btnDelete_Click_Select_the_product_to_be_deleted" xml:space="preserve">
+    <value>Select the product to be deleted</value>
+  </data>
+  <data name="FrmProducts_btnAdd_Click_Fill_in_mandatory_fields" xml:space="preserve">
+    <value>Fill in mandatory fields</value>
+  </data>
+  <data name="frmProductTypes_btnUpdate_Click_New_Product_Type_Inserted_Updated_Successfully_" xml:space="preserve">
+    <value>New Product Type Inserted/Updated Successfully.</value>
+  </data>
+  <data name="frmProductTypes_btnUpdate_Click_Failed_to_Insert_New_Product_Type_" xml:space="preserve">
+    <value>Failed to Insert New Product Type.</value>
+  </data>
+  <data name="frmUsers_btnAdd_Click_User_successfully_created_" xml:space="preserve">
+    <value>User successfully created.</value>
+  </data>
+  <data name="frmUsers_btnAdd_Click_Failed_to_add_new_user" xml:space="preserve">
+    <value>Failed to add new user</value>
+  </data>
+  <data name="frmUsers_btnUpdate_Click_User_successfully_updated" xml:space="preserve">
+    <value>User successfully updated</value>
+  </data>
+  <data name="frmUsers_btnUpdate_Click_Failed_to_update_user" xml:space="preserve">
+    <value>Failed to update user</value>
+  </data>
+  <data name="frmUsers_btnDelete_Click_Failed_to_delete_user" xml:space="preserve">
+    <value>Failed to delete user</value>
+  </data>
+  <data name="frmUsers_btnDelete_Click_User_deleted_successfully" xml:space="preserve">
+    <value>User deleted successfully</value>
+  </data>
+  <data name="FrmUserDashboard_productTypeToolStripMenuItem_Click_Product_Types" xml:space="preserve">
+    <value>Product Types</value>
+  </data>
 </root>

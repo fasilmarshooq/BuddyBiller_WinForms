@@ -1,28 +1,23 @@
-﻿using AnyStore.BLL;
-using BB.System.Common;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BB.System.Common;
+using BuddyBiller.BLL;
 
-namespace AnyStore.DAL
+namespace BuddyBiller.DAL
 {
-    class transactionDAL
+    class TransactionDal
     {
         SqlConnection conn = RepositoryFactory.RepositoryConnectionBuilder();
 
         #region Insert Transaction Method
-        public bool Insert_Transaction(transactionsBLL t, out int transactionID)
+        public bool Insert_Transaction(TransactionsBll t, out int transactionId)
         {
             //Create a boolean value and set its default value to false
             bool isSuccess = false;
             //Set the out transactionID value to negative 1 i.e. -1
-            transactionID = -1;
+            transactionId = -1;
             //Create a SqlConnection first
             try
             {
@@ -33,13 +28,13 @@ namespace AnyStore.DAL
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 //Passing the value to sql query using cmd
-                cmd.Parameters.AddWithValue("@type", t.type);
-                cmd.Parameters.AddWithValue("@dea_cust_id", t.dea_cust_id);
-                cmd.Parameters.AddWithValue("@grandTotal", t.grandTotal);
-                cmd.Parameters.AddWithValue("@transaction_date", t.transaction_date);
-                cmd.Parameters.AddWithValue("@tax", t.tax);
-                cmd.Parameters.AddWithValue("@discount", t.discount);
-                cmd.Parameters.AddWithValue("@added_by", t.added_by);
+                cmd.Parameters.AddWithValue("@type", t.Type);
+                cmd.Parameters.AddWithValue("@dea_cust_id", t.DeaCustId);
+                cmd.Parameters.AddWithValue("@grandTotal", t.GrandTotal);
+                cmd.Parameters.AddWithValue("@transaction_date", t.TransactionDate);
+                cmd.Parameters.AddWithValue("@tax", t.Tax);
+                cmd.Parameters.AddWithValue("@discount", t.Discount);
+                cmd.Parameters.AddWithValue("@added_by", t.AddedBy);
 
                 //Open Database Connection
                 conn.Open();
@@ -51,7 +46,7 @@ namespace AnyStore.DAL
                 if(o!=null)
                 {
                     //Query Executed Successfully
-                    transactionID = int.Parse(o.ToString());
+                    transactionId = int.Parse(o.ToString());
                     isSuccess = true;
                 }
                 else

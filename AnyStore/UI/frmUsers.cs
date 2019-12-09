@@ -1,26 +1,21 @@
-﻿using AnyStore.BLL;
-using AnyStore.DAL;
+﻿using BuddyBiller.BLL;
+using BuddyBiller.DAL;
+using BuddyBiller.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AnyStore.UI
 {
-    public partial class frmUsers : Form
+    public partial class FrmUsers : Form
     {
-        public frmUsers()
+        public FrmUsers()
         {
             InitializeComponent();
         }
 
-        userBLL u = new userBLL();
-        userDAL dal = new userDAL();
+        UserBll u = new UserBll();
+        UserDal dal = new UserDal();
 
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
@@ -32,36 +27,36 @@ namespace AnyStore.UI
             
 
             //Gettting Data FRom UI
-            u.first_name = txtFirstName.Text;
-            u.last_name = txtLastName.Text;
-            u.email = txtEmail.Text;
-            u.username = txtUsername.Text;
-            u.password = txtPassword.Text;
-            u.contact = txtContact.Text;
-            u.address = txtAddress.Text;
-            u.gender = cmbGender.Text;
-            u.user_type = cmbUserType.Text;
-            u.added_date = DateTime.Now;
+            u.FirstName = txtFirstName.Text;
+            u.LastName = txtLastName.Text;
+            u.Email = txtEmail.Text;
+            u.Username = txtUsername.Text;
+            u.Password = txtPassword.Text;
+            u.Contact = txtContact.Text;
+            u.Address = txtAddress.Text;
+            u.Gender = cmbGender.Text;
+            u.UserType = cmbUserType.Text;
+            u.AddedDate = DateTime.Now;
 
             //Getting Username of the logged in user
-            string loggedUser = frmLogin.loggedIn;
-            userBLL usr = dal.GetIDFromUsername(loggedUser);
+            string loggedUser = FrmLogin.loggedIn;
+            UserBll usr = dal.GetIdFromUsername(loggedUser);
 
-            u.added_by = usr.id;
+            u.AddedBy = usr.Id;
 
             //Inserting Data into DAtabase
             bool success = dal.Insert(u);
             //If the data is successfully inserted then the value of success will be true else it will be false
-            if(success==true)
+            if(success)
             {
                 //Data Successfully Inserted
-                MessageBox.Show("User successfully created.");
+                MessageBox.Show(Resources.frmUsers_btnAdd_Click_User_successfully_created_);
                 clear();
             }
             else
             {
                 //Failed to insert data
-                MessageBox.Show("Failed to add new user");
+                MessageBox.Show(Resources.frmUsers_btnAdd_Click_Failed_to_add_new_user);
             }
             //Refreshing Data Grid View
             DataTable dt = dal.Select();
@@ -106,32 +101,32 @@ namespace AnyStore.UI
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //Get the values from User UI
-            u.id = Convert.ToInt32(txtUserID.Text);
-            u.first_name = txtFirstName.Text;
-            u.last_name = txtLastName.Text;
-            u.email = txtEmail.Text;
-            u.username = txtUsername.Text;
-            u.password = txtPassword.Text;
-            u.contact = txtContact.Text;
-            u.address = txtAddress.Text;
-            u.gender = cmbGender.Text;
-            u.user_type = cmbUserType.Text;
-            u.added_date = DateTime.Now;
-            u.added_by = 1;
+            u.Id = Convert.ToInt32(txtUserID.Text);
+            u.FirstName = txtFirstName.Text;
+            u.LastName = txtLastName.Text;
+            u.Email = txtEmail.Text;
+            u.Username = txtUsername.Text;
+            u.Password = txtPassword.Text;
+            u.Contact = txtContact.Text;
+            u.Address = txtAddress.Text;
+            u.Gender = cmbGender.Text;
+            u.UserType = cmbUserType.Text;
+            u.AddedDate = DateTime.Now;
+            u.AddedBy = 1;
 
             //Updating Data into database
             bool success = dal.Update(u);
             //if data is updated successfully then the value of success will be true else it will be false
-            if(success==true)
+            if(success)
             {
                 //Data Updated Successfully
-                MessageBox.Show("User successfully updated");
+                MessageBox.Show(Resources.frmUsers_btnUpdate_Click_User_successfully_updated);
                 clear();
             }
             else
             {
                 //failed to update user
-                MessageBox.Show("Failed to update user");
+                MessageBox.Show(Resources.frmUsers_btnUpdate_Click_Failed_to_update_user);
             }
             //Refreshing Data Grid View
             DataTable dt = dal.Select();
@@ -141,20 +136,20 @@ namespace AnyStore.UI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //Getting User ID from Form
-            u.id = Convert.ToInt32(txtUserID.Text);
+            u.Id = Convert.ToInt32(txtUserID.Text);
 
             bool success = dal.Delete(u);
             //if data is deleted then the value of success will be true else it will be false
-            if(success==true)
+            if(success)
             {
                 //User Deleted Successfully 
-                MessageBox.Show("User deleted successfully");
+                MessageBox.Show(Resources.frmUsers_btnDelete_Click_User_deleted_successfully);
                 clear();
             }
             else
             {
                 //Failed to Delete User
-                MessageBox.Show("Failed to delete user");
+                MessageBox.Show(Resources.frmUsers_btnDelete_Click_Failed_to_delete_user);
 
             }
             //refreshing Datagrid view

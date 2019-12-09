@@ -1,26 +1,20 @@
-﻿using AnyStore.BLL;
-using AnyStore.DAL;
-using BB.System.Common;
+﻿using BB.System.Common;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BuddyBiller.Properties;
 
 namespace AnyStore.UI
 {
-    public partial class frmProductTypes: Form
+    public partial class FrmProductTypes: Form
     {
         BuddyBillerRepository db = new BuddyBillerRepository();
-        DataTable ProductTypedt;
+        DataTable productTypedt;
         int selectedProductTypeId;
 
-        public frmProductTypes()
+        public FrmProductTypes()
         {
             InitializeComponent();
         }
@@ -38,10 +32,10 @@ namespace AnyStore.UI
         private void reloadForm()
         {
             Clear();
-            var productTypes = db.ProductTypes.Where(t=>t.IsActive).Select(X => X);
+            var productTypes = db.ProductTypes.Where(t=>t.IsActive).Select(x => x);
 
-            ProductTypedt = DataSetLinqOperators.ToDataTable<ProductType>(productTypes);            
-            grdProductTypes.DataSource = ProductTypedt;
+            productTypedt = DataSetLinqOperators.ToDataTable<ProductType>(productTypes);            
+            grdProductTypes.DataSource = productTypedt;
 
             txtProductTypeId.Visible = false;
         }
@@ -57,11 +51,11 @@ namespace AnyStore.UI
         private void grdProductTypes_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             //Finding the Row Index of the Row Clicked on Data Grid View
-            int RowIndex = e.RowIndex;
-            selectedProductTypeId = int.Parse(grdProductTypes.Rows[RowIndex].Cells[0].Value.ToString());
-            txtProductTypeId.Text = grdProductTypes.Rows[RowIndex].Cells[0].Value.ToString();
-            txtName.Text = grdProductTypes.Rows[RowIndex].Cells[1].Value.ToString();
-            txtDescription.Text = grdProductTypes.Rows[RowIndex].Cells[2].Value.ToString();
+            int rowIndex = e.RowIndex;
+            selectedProductTypeId = int.Parse(grdProductTypes.Rows[rowIndex].Cells[0].Value.ToString());
+            txtProductTypeId.Text = grdProductTypes.Rows[rowIndex].Cells[0].Value.ToString();
+            txtName.Text = grdProductTypes.Rows[rowIndex].Cells[1].Value.ToString();
+            txtDescription.Text = grdProductTypes.Rows[rowIndex].Cells[2].Value.ToString();
         }
        
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -97,18 +91,18 @@ namespace AnyStore.UI
             productType.IsActive=true;
 
             //Creating Boolean Method To insert data into database
-            bool success = SaveOrUpdate(productType);;
+            bool success = SaveOrUpdate(productType);
             reloadForm();
             //If the category is inserted successfully then the value of the success will be true else it will be false
-            if(success==true)
+            if(success)
             {
                 //NewCAtegory Inserted Successfully
-                MessageBox.Show("New Product Type Inserted/Updated Successfully.");                           
+                MessageBox.Show(Resources.frmProductTypes_btnUpdate_Click_New_Product_Type_Inserted_Updated_Successfully_);                           
             }
             else
             {
                 //FAiled to Insert New Category
-                MessageBox.Show("Failed to Insert New Product Type.");
+                MessageBox.Show(Resources.frmProductTypes_btnUpdate_Click_Failed_to_Insert_New_Product_Type_);
             }
              
         }
@@ -124,7 +118,7 @@ namespace AnyStore.UI
             productType.IsActive=false;
 
             //Creating Boolean Method To insert data into database
-            bool success = SaveOrUpdate(productType);;
+            SaveOrUpdate(productType);
             reloadForm();
         }
 

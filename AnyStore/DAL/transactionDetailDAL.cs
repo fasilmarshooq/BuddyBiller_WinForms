@@ -1,28 +1,24 @@
-﻿using AnyStore.BLL;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BuddyBiller.BLL;
 
-namespace AnyStore.DAL
+namespace BuddyBiller.DAL
 {
-    class transactionDetailDAL
+    class TransactionDetailDal
     {
         //Create Connection String
-        static string myconnstrng = ConfigurationManager.ConnectionStrings["connstrng"].ConnectionString;
+        static string _myconnstrng = ConfigurationManager.ConnectionStrings["connstrng"].ConnectionString;
 
         #region Insert Method for Transaction Detail
-        public bool InsertTransactionDetail(transactionDetailBLL td)
+        public bool InsertTransactionDetail(TransactionDetailBll td)
         {
             //Create a boolean value and set its default value to false
             bool isSuccess = false;
 
             //Create a database connection here
-            SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(_myconnstrng);
 
             try
             {
@@ -32,13 +28,13 @@ namespace AnyStore.DAL
                 //Passing the value to the SQL Query
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //Passing the values using cmd
-                cmd.Parameters.AddWithValue("@product_id", td.product_id);
-                cmd.Parameters.AddWithValue("@rate", td.rate);
-                cmd.Parameters.AddWithValue("@qty", td.qty);
-                cmd.Parameters.AddWithValue("@total", td.total);
-                cmd.Parameters.AddWithValue("@dea_cust_id", td.dea_cust_id);
-                cmd.Parameters.AddWithValue("@added_date", td.added_date);
-                cmd.Parameters.AddWithValue("@added_by", td.added_by);
+                cmd.Parameters.AddWithValue("@product_id", td.ProductId);
+                cmd.Parameters.AddWithValue("@rate", td.Rate);
+                cmd.Parameters.AddWithValue("@qty", td.Qty);
+                cmd.Parameters.AddWithValue("@total", td.Total);
+                cmd.Parameters.AddWithValue("@dea_cust_id", td.DeaCustId);
+                cmd.Parameters.AddWithValue("@added_date", td.AddedDate);
+                cmd.Parameters.AddWithValue("@added_by", td.AddedBy);
 
                 //Open Database connection
                 conn.Open();
@@ -50,11 +46,6 @@ namespace AnyStore.DAL
                 {
                     //Query Executed Successfully
                     isSuccess = true;
-                }
-                else
-                {
-                    //FAiled to Execute Query
-                    isSuccess = false;
                 }
             }
             catch(Exception ex)

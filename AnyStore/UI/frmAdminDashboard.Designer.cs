@@ -1,6 +1,6 @@
 ﻿namespace AnyStore
 {
-    partial class frmAdminDashboard
+    partial class FrmAdminDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -111,13 +111,6 @@
             this.deealerAndCustomerToolStripMenuItem.Text = "Deealer and Customer";
             this.deealerAndCustomerToolStripMenuItem.Click += new System.EventHandler(this.deealerAndCustomerToolStripMenuItem_Click);
             // 
-            // inventoryToolStripMenuItem
-            // 
-            this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(99, 29);
-            this.inventoryToolStripMenuItem.Text = "Inventory";
-            this.inventoryToolStripMenuItem.Click += new System.EventHandler(this.inventoryToolStripMenuItem_Click);
-            // 
             // transactionToolStripMenuItem
             // 
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
@@ -158,7 +151,7 @@
             this.Controls.Add(this.menuStripTop);
             this.MainMenuStrip = this.menuStripTop;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmAdminDashboard";
+            this.Name = "FrmAdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

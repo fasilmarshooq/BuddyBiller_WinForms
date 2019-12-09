@@ -1,23 +1,18 @@
-﻿using BB.System.Common;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AnyStore.BLL
+namespace BuddyBiller.BLL
 {
-    public class DeaCustBLL
+    public class DeaCustBll
     {
-        public int id { get; set; }
-        public string type { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public string contact { get; set; }
-        public string address { get; set; }
-        public DateTime added_date { get; set; }
-        public int added_by { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Contact { get; set; }
+        public string Address { get; set; }
+        public DateTime AddedDate { get; set; }
+        public int AddedBy { get; set; }
 
         public void SaveOrUpdate(Party entity, BuddyBillerRepository db)
         {

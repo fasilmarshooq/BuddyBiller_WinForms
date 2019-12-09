@@ -10,7 +10,7 @@ using BB.System.Common;
 
 namespace BuddyBiller.DAL
 {
-    class PartyTypeDAL
+    class PartyTypeDal
     {
 
         SqlConnection conn = RepositoryFactory.RepositoryConnectionBuilder();

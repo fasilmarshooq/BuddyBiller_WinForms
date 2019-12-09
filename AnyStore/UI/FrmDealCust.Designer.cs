@@ -1,6 +1,6 @@
 ﻿namespace AnyStore.UI
 {
-    partial class frmDeaCust
+    partial class FrmDealCust
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDeaCust));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDealCust));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.lblTop = new System.Windows.Forms.Label();
@@ -60,18 +60,16 @@
             this.panel1.Controls.Add(this.lblTop);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1113, 41);
+            this.panel1.Size = new System.Drawing.Size(835, 33);
             this.panel1.TabIndex = 3;
             // 
             // pictureBoxClose
             // 
             this.pictureBoxClose.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxClose.Image")));
-            this.pictureBoxClose.Location = new System.Drawing.Point(1069, 0);
-            this.pictureBoxClose.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxClose.Location = new System.Drawing.Point(802, 0);
             this.pictureBoxClose.Name = "pictureBoxClose";
-            this.pictureBoxClose.Size = new System.Drawing.Size(41, 37);
+            this.pictureBoxClose.Size = new System.Drawing.Size(31, 30);
             this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxClose.TabIndex = 1;
             this.pictureBoxClose.TabStop = false;
@@ -81,10 +79,9 @@
             // 
             this.lblTop.AutoSize = true;
             this.lblTop.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTop.Location = new System.Drawing.Point(447, 6);
-            this.lblTop.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTop.Location = new System.Drawing.Point(335, 5);
             this.lblTop.Name = "lblTop";
-            this.lblTop.Size = new System.Drawing.Size(224, 28);
+            this.lblTop.Size = new System.Drawing.Size(180, 21);
             this.lblTop.TabIndex = 0;
             this.lblTop.Text = "DEALER and CUSTOMER";
             // 
@@ -92,10 +89,9 @@
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(32, 165);
-            this.lblType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblType.Location = new System.Drawing.Point(24, 134);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(45, 23);
+            this.lblType.Size = new System.Drawing.Size(35, 17);
             this.lblType.TabIndex = 5;
             this.lblType.Text = "Type";
             // 
@@ -103,10 +99,9 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(32, 121);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(24, 98);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(56, 23);
+            this.lblName.Size = new System.Drawing.Size(43, 17);
             this.lblName.TabIndex = 6;
             this.lblName.Text = "Name";
             // 
@@ -114,10 +109,9 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(32, 263);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmail.Location = new System.Drawing.Point(24, 214);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(51, 23);
+            this.lblEmail.Size = new System.Drawing.Size(39, 17);
             this.lblEmail.TabIndex = 7;
             this.lblEmail.Text = "Email";
             // 
@@ -125,10 +119,9 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(32, 315);
-            this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddress.Location = new System.Drawing.Point(24, 256);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(70, 23);
+            this.lblAddress.Size = new System.Drawing.Size(56, 17);
             this.lblAddress.TabIndex = 9;
             this.lblAddress.Text = "Address";
             // 
@@ -136,10 +129,9 @@
             // 
             this.lblContact.AutoSize = true;
             this.lblContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContact.Location = new System.Drawing.Point(32, 213);
-            this.lblContact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblContact.Location = new System.Drawing.Point(24, 173);
             this.lblContact.Name = "lblContact";
-            this.lblContact.Size = new System.Drawing.Size(70, 23);
+            this.lblContact.Size = new System.Drawing.Size(52, 17);
             this.lblContact.TabIndex = 8;
             this.lblContact.Text = "Contact";
             // 
@@ -147,47 +139,42 @@
             // 
             this.cmbDeaCust.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDeaCust.FormattingEnabled = true;
-            this.cmbDeaCust.Location = new System.Drawing.Point(177, 165);
-            this.cmbDeaCust.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbDeaCust.Location = new System.Drawing.Point(133, 134);
             this.cmbDeaCust.Name = "cmbDeaCust";
-            this.cmbDeaCust.Size = new System.Drawing.Size(325, 29);
+            this.cmbDeaCust.Size = new System.Drawing.Size(245, 25);
             this.cmbDeaCust.TabIndex = 11;
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(177, 121);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtName.Location = new System.Drawing.Point(133, 98);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(325, 29);
+            this.txtName.Size = new System.Drawing.Size(245, 25);
             this.txtName.TabIndex = 12;
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(177, 213);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmail.Location = new System.Drawing.Point(133, 173);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(325, 29);
+            this.txtEmail.Size = new System.Drawing.Size(245, 25);
             this.txtEmail.TabIndex = 13;
             // 
             // txtContact
             // 
             this.txtContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.Location = new System.Drawing.Point(177, 260);
-            this.txtContact.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContact.Location = new System.Drawing.Point(133, 211);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(325, 29);
+            this.txtContact.Size = new System.Drawing.Size(245, 25);
             this.txtContact.TabIndex = 14;
             // 
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(177, 311);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAddress.Location = new System.Drawing.Point(133, 253);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(325, 134);
+            this.txtAddress.Size = new System.Drawing.Size(245, 110);
             this.txtAddress.TabIndex = 15;
             // 
             // btnAdd
@@ -195,10 +182,9 @@
             this.btnAdd.BackColor = System.Drawing.Color.ForestGreen;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(396, 465);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Location = new System.Drawing.Point(297, 378);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(136, 58);
+            this.btnAdd.Size = new System.Drawing.Size(102, 47);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "SUBMIT";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -210,10 +196,9 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(551, 465);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Location = new System.Drawing.Point(413, 378);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(136, 58);
+            this.btnDelete.Size = new System.Drawing.Size(102, 47);
             this.btnDelete.TabIndex = 18;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -222,20 +207,18 @@
             // dgvDeaCust
             // 
             this.dgvDeaCust.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeaCust.Location = new System.Drawing.Point(532, 121);
-            this.dgvDeaCust.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDeaCust.Location = new System.Drawing.Point(399, 98);
             this.dgvDeaCust.Name = "dgvDeaCust";
-            this.dgvDeaCust.Size = new System.Drawing.Size(545, 326);
+            this.dgvDeaCust.Size = new System.Drawing.Size(409, 265);
             this.dgvDeaCust.TabIndex = 19;
             this.dgvDeaCust.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDeaCust_RowHeaderMouseClick);
             // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(599, 73);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Location = new System.Drawing.Point(449, 59);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(477, 29);
+            this.txtSearch.Size = new System.Drawing.Size(359, 25);
             this.txtSearch.TabIndex = 21;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -243,29 +226,28 @@
             // 
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(528, 73);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSearch.Location = new System.Drawing.Point(396, 59);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(61, 23);
+            this.lblSearch.Size = new System.Drawing.Size(47, 17);
             this.lblSearch.TabIndex = 20;
             this.lblSearch.Text = "Search";
             // 
             // txtDeaCustID
             // 
             this.txtDeaCustID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeaCustID.Location = new System.Drawing.Point(177, 73);
-            this.txtDeaCustID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDeaCustID.Location = new System.Drawing.Point(133, 59);
             this.txtDeaCustID.Name = "txtDeaCustID";
             this.txtDeaCustID.ReadOnly = true;
-            this.txtDeaCustID.Size = new System.Drawing.Size(325, 29);
+            this.txtDeaCustID.Size = new System.Drawing.Size(245, 25);
             this.txtDeaCustID.TabIndex = 10;
             // 
-            // frmDeaCust
+            // FrmDealCust
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(1113, 538);
+            this.ClientSize = new System.Drawing.Size(835, 437);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.dgvDeaCust);
@@ -282,10 +264,8 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblType);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmDeaCust";
+            this.Name = "FrmDealCust";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDeaCust";
             this.Load += new System.EventHandler(this.frmDeaCust_Load);

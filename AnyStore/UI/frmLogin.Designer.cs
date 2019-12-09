@@ -1,6 +1,6 @@
 ﻿namespace AnyStore.UI
 {
-    partial class frmLogin
+    partial class FrmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.cmbUserType = new System.Windows.Forms.ComboBox();
@@ -166,7 +166,7 @@
             this.pboxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxClose.TabIndex = 1;
             this.pboxClose.TabStop = false;
-            this.pboxClose.Click += new System.EventHandler(this.pboxClose_Click);
+            this.pboxClose.Click += new System.EventHandler(this.PboxClose_Click);
             // 
             // frmLogin
             // 
@@ -180,7 +180,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frmLogin";
+            this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyDown);

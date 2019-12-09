@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AnyStore.BLL
+namespace BuddyBiller.BLL
 {
-    public class productsBLL
+    public class ProductsBll
     {
         //Getters and Setters for Product Module
-        public int id { get; set; }
-        public string name { get; set; }
-        public string category { get; set; }
-        public string description { get; set; }
-        public decimal rate { get; set; }
-        public decimal qty { get; set; }
-        public DateTime added_date { get; set; }
-        public int added_by { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
+        public decimal Rate { get; set; }
+        public decimal Qty { get; set; }
+        public DateTime AddedDate { get; set; }
+        public int AddedBy { get; set; }
 
         public void SaveOrUpdate(Product entity, BuddyBillerRepository db)
         {

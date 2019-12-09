@@ -105,17 +105,11 @@
     <Compile Include="UI\frmProductTypes.Designer.cs">
       <DependentUpon>frmProductTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\frmDeaCust.cs">
+    <Compile Include="UI\FrmDealCust.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\frmDeaCust.Designer.cs">
-      <DependentUpon>frmDeaCust.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\frmInventory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\frmInventory.Designer.cs">
-      <DependentUpon>frmInventory.cs</DependentUpon>
+    <Compile Include="UI\FrmDealCust.Designer.cs">
+      <DependentUpon>FrmDealCust.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmLogin.cs">
       <SubType>Form</SubType>
@@ -161,11 +155,8 @@
     <EmbeddedResource Include="UI\frmProductTypes.resx">
       <DependentUpon>frmProductTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmDeaCust.resx">
-      <DependentUpon>frmDeaCust.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmInventory.resx">
-      <DependentUpon>frmInventory.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmDealCust.resx">
+      <DependentUpon>FrmDealCust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

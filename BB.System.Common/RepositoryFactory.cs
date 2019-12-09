@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BB.System.Common
 {
@@ -16,7 +11,7 @@ namespace BB.System.Common
 
             string myconnstrng = ConfigurationManager.ConnectionStrings["temp"].ConnectionString;
 
-             SqlConnection conn = new SqlConnection(myconnstrng);
+            SqlConnection conn = new SqlConnection(myconnstrng);
 
             BuddyBillerRepository db = new BuddyBillerRepository();
 

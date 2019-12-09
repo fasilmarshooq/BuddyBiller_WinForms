@@ -1,6 +1,6 @@
 ﻿namespace AnyStore
 {
-    partial class frmUserDashboard
+    partial class FrmUserDashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -31,12 +31,10 @@
             this.menuStripTop = new System.Windows.Forms.MenuStrip();
             this.purchaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesFormsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dealerAndCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.productTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblLoggedInUser = new System.Windows.Forms.Label();
-            this.lblUser = new System.Windows.Forms.Label();
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.lblFooter = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -51,7 +49,6 @@
             this.menuStripTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.purchaseToolStripMenuItem,
             this.salesFormsToolStripMenuItem,
-            this.inventoryToolStripMenuItem,
             this.dealerAndCustomerToolStripMenuItem,
             this.productsToolStripMenuItem,
             this.productTypeToolStripMenuItem});
@@ -76,13 +73,6 @@
             this.salesFormsToolStripMenuItem.Text = "Sales";
             this.salesFormsToolStripMenuItem.Click += new System.EventHandler(this.salesFormsToolStripMenuItem_Click);
             // 
-            // inventoryToolStripMenuItem
-            // 
-            this.inventoryToolStripMenuItem.Name = "inventoryToolStripMenuItem";
-            this.inventoryToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.inventoryToolStripMenuItem.Text = "Inventory";
-            this.inventoryToolStripMenuItem.Click += new System.EventHandler(this.inventoryToolStripMenuItem_Click);
-            // 
             // dealerAndCustomerToolStripMenuItem
             // 
             this.dealerAndCustomerToolStripMenuItem.Name = "dealerAndCustomerToolStripMenuItem";
@@ -90,19 +80,19 @@
             this.dealerAndCustomerToolStripMenuItem.Text = "Dealer and Customer";
             this.dealerAndCustomerToolStripMenuItem.Click += new System.EventHandler(this.dealerAndCustomerToolStripMenuItem_Click);
             // 
-            // productTypeToolStripMenuItem
-            // 
-            this.productTypeToolStripMenuItem.Name = "productTypeToolStripMenuItem";
-            this.productTypeToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.productTypeToolStripMenuItem.Text = "Product Type";
-            this.productTypeToolStripMenuItem.Click += new System.EventHandler(this.productTypeToolStripMenuItem_Click);
-            // 
             // productsToolStripMenuItem
             // 
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             this.productsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.productsToolStripMenuItem.Text = "Product";
             this.productsToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
+            // 
+            // productTypeToolStripMenuItem
+            // 
+            this.productTypeToolStripMenuItem.Name = "productTypeToolStripMenuItem";
+            this.productTypeToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.productTypeToolStripMenuItem.Text = "Product Type";
+            this.productTypeToolStripMenuItem.Click += new System.EventHandler(this.productTypeToolStripMenuItem_Click);
             // 
             // lblLoggedInUser
             // 
@@ -113,16 +103,6 @@
             this.lblLoggedInUser.Name = "lblLoggedInUser";
             this.lblLoggedInUser.Size = new System.Drawing.Size(0, 17);
             this.lblLoggedInUser.TabIndex = 8;
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(9, 47);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(42, 17);
-            this.lblUser.TabIndex = 7;
-            this.lblUser.Text = "User: ";
             // 
             // pnlFooter
             // 
@@ -148,26 +128,25 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(963, 436);
+            this.pictureBox1.Size = new System.Drawing.Size(963, 494);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
-            // frmUserDashboard
+            // FrmUserDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 494);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlFooter);
             this.Controls.Add(this.lblLoggedInUser);
-            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.menuStripTop);
+            this.Controls.Add(this.pictureBox1);
             this.MainMenuStrip = this.menuStripTop;
-            this.Name = "frmUserDashboard";
+            this.Name = "FrmUserDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -188,9 +167,7 @@
         private System.Windows.Forms.MenuStrip menuStripTop;
         private System.Windows.Forms.ToolStripMenuItem purchaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesFormsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inventoryToolStripMenuItem;
         private System.Windows.Forms.Label lblLoggedInUser;
-        private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Panel pnlFooter;
         private System.Windows.Forms.Label lblFooter;
         private System.Windows.Forms.ToolStripMenuItem dealerAndCustomerToolStripMenuItem;

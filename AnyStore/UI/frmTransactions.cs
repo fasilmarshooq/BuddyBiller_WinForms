@@ -1,25 +1,19 @@
-﻿using AnyStore.DAL;
+﻿using BuddyBiller.DAL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AnyStore.UI
 {
-    public partial class frmTransactions : Form
+    public partial class FrmTransactions : Form
     {
-        public frmTransactions()
+        public FrmTransactions()
         {
             InitializeComponent();
         }
 
-        transactionDAL tdal = new transactionDAL();
-        DeaCustDAL dCDAL = new DeaCustDAL();
+        TransactionDal tdal = new TransactionDal();
+        DeaCustDal dCdal = new DeaCustDal();
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -27,8 +21,8 @@ namespace AnyStore.UI
 
         private void frmTransactions_Load(object sender, EventArgs e)
         {
-            DataTable Customerdt = dCDAL.Select();
-            cmbCustomer.DataSource = Customerdt;
+            DataTable customerdt = dCdal.Select();
+            cmbCustomer.DataSource = customerdt;
             cmbCustomer.DisplayMember = "Name";
             cmbCustomer.ValueMember = "Name";
 

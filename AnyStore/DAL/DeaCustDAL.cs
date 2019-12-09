@@ -1,18 +1,13 @@
-﻿using AnyStore.BLL;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BB.System.Common;
+using BuddyBiller.BLL;
 
-namespace AnyStore.DAL
+namespace BuddyBiller.DAL
 {
-    class DeaCustDAL
+    class DeaCustDal
     {
 
         SqlConnection conn = RepositoryFactory.RepositoryConnectionBuilder();
@@ -54,26 +49,26 @@ namespace AnyStore.DAL
         }
         #endregion
         #region INSERT Method to Add details fo Dealer or Customer
-        public bool Insert(DeaCustBLL dc)
+        public bool Insert(DeaCustBll dc)
         {
 
-            using (SqlConnection conn = RepositoryFactory.RepositoryConnectionBuilder())
+            using (SqlConnection repositoryConnectionBuilder = RepositoryFactory.RepositoryConnectionBuilder())
             {
                 try
                 {
 
-                    SqlCommand cmd = new SqlCommand("SaveCustomers", conn);
+                    SqlCommand cmd = new SqlCommand("SaveCustomers", repositoryConnectionBuilder);
                     cmd.CommandType = CommandType.StoredProcedure;
                     //Passing the calues using Parameters
-                    cmd.Parameters.AddWithValue("@type", dc.type);
-                    cmd.Parameters.AddWithValue("@name", dc.name);
-                    cmd.Parameters.AddWithValue("@email", dc.email);
-                    cmd.Parameters.AddWithValue("@contact", dc.contact);
-                    cmd.Parameters.AddWithValue("@address", dc.address);
-                    cmd.Parameters.AddWithValue("@added_by", dc.added_by);
+                    cmd.Parameters.AddWithValue("@type", dc.Type);
+                    cmd.Parameters.AddWithValue("@name", dc.Name);
+                    cmd.Parameters.AddWithValue("@email", dc.Email);
+                    cmd.Parameters.AddWithValue("@contact", dc.Contact);
+                    cmd.Parameters.AddWithValue("@address", dc.Address);
+                    cmd.Parameters.AddWithValue("@added_by", dc.AddedBy);
 
                     //Open DAtabaseConnection
-                    conn.Open();
+                    repositoryConnectionBuilder.Open();
 
                     //Int variable to check whether the query is executed successfully or not
                     var success = cmd.ExecuteNonQuery();
@@ -91,7 +86,7 @@ namespace AnyStore.DAL
                 }
                 finally
                 {
-                    conn.Close();
+                    repositoryConnectionBuilder.Close();
                 }
             }
 
@@ -99,7 +94,7 @@ namespace AnyStore.DAL
         }
         #endregion
         #region UPDATE method for Dealer and Customer Module
-        public bool Update(DeaCustBLL dc)
+        public bool Update(DeaCustBll dc)
         {
 
             //Create Boolean variable and set its default value to false
@@ -113,14 +108,14 @@ namespace AnyStore.DAL
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 //Passing the values through parameters
-                cmd.Parameters.AddWithValue("@type", dc.type);
-                cmd.Parameters.AddWithValue("@name", dc.name);
-                cmd.Parameters.AddWithValue("@email", dc.email);
-                cmd.Parameters.AddWithValue("@contact", dc.contact);
-                cmd.Parameters.AddWithValue("@address", dc.address);
-                cmd.Parameters.AddWithValue("@added_date", dc.added_date);
-                cmd.Parameters.AddWithValue("@added_by", dc.added_by);
-                cmd.Parameters.AddWithValue("@id", dc.id);
+                cmd.Parameters.AddWithValue("@type", dc.Type);
+                cmd.Parameters.AddWithValue("@name", dc.Name);
+                cmd.Parameters.AddWithValue("@email", dc.Email);
+                cmd.Parameters.AddWithValue("@contact", dc.Contact);
+                cmd.Parameters.AddWithValue("@address", dc.Address);
+                cmd.Parameters.AddWithValue("@added_date", dc.AddedDate);
+                cmd.Parameters.AddWithValue("@added_by", dc.AddedBy);
+                cmd.Parameters.AddWithValue("@id", dc.Id);
 
                 //open the Database Connection
                 conn.Open();
@@ -151,7 +146,7 @@ namespace AnyStore.DAL
         }
         #endregion
         #region DELETE Method for Dealer and Customer Module
-        public bool Delete(DeaCustBLL dc)
+        public bool Delete(DeaCustBll dc)
         {
 
             //Create a Boolean Variable and set its default value to false
@@ -165,7 +160,7 @@ namespace AnyStore.DAL
                 //SQL command to pass the value
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 //Passing the value
-                cmd.Parameters.AddWithValue("@id", dc.id);
+                cmd.Parameters.AddWithValue("@id", dc.Id);
 
                 //Open DB Connection
                 conn.Open();
@@ -229,10 +224,10 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO SAERCH DEALER Or CUSTOMER FOR TRANSACTON MODULE
-        public DeaCustBLL SearchDealerCustomerForTransaction(string keyword)
+        public DeaCustBll SearchDealerCustomerForTransaction(string keyword)
         {
             //Create an object for DeaCustBLL class
-            DeaCustBLL dc = new DeaCustBLL();
+            DeaCustBll dc = new DeaCustBll();
 
 
             //Create a DAta Table to hold the value temporarily
@@ -255,10 +250,10 @@ namespace AnyStore.DAL
                 //If we have values on dt we need to save it in dealerCustomer BLL
                 if(dt.Rows.Count>0)
                 {
-                    dc.name = dt.Rows[0]["name"].ToString();
-                    dc.email = dt.Rows[0]["email"].ToString();
-                    dc.contact = dt.Rows[0]["contact"].ToString();
-                    dc.address = dt.Rows[0]["address"].ToString();
+                    dc.Name = dt.Rows[0]["name"].ToString();
+                    dc.Email = dt.Rows[0]["email"].ToString();
+                    dc.Contact = dt.Rows[0]["contact"].ToString();
+                    dc.Address = dt.Rows[0]["address"].ToString();
                 }
 
             }
@@ -276,10 +271,10 @@ namespace AnyStore.DAL
         }
         #endregion
         #region METHOD TO GET ID OF THE DEALER OR CUSTOMER BASED ON NAME
-        public DeaCustBLL GetDeaCustIDFromName(string Name)
+        public DeaCustBll GetDeaCustIdFromName(string name)
         {
             //First Create an Object of DeaCust BLL and REturn it
-            DeaCustBLL dc = new DeaCustBLL();
+            DeaCustBll dc = new DeaCustBll();
 
             //Data TAble to Holdthe data temporarily
             DataTable dt = new DataTable();
@@ -287,7 +282,7 @@ namespace AnyStore.DAL
             try
             {
                 //SQL Query to Get id based on Name
-                string sql = "SELECT id FROM tbl_dea_cust WHERE name='"+Name+"'";
+                string sql = "SELECT id FROM tbl_dea_cust WHERE name='"+name+"'";
                 //Create the SQL Data Adapter to Execute the Query
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
 
@@ -298,7 +293,7 @@ namespace AnyStore.DAL
                 if(dt.Rows.Count>0)
                 {
                     //Pass the value from dt to DeaCustBLL dc
-                    dc.id = int.Parse(dt.Rows[0]["id"].ToString());
+                    dc.Id = int.Parse(dt.Rows[0]["id"].ToString());
                 }
             }
             catch(Exception ex)

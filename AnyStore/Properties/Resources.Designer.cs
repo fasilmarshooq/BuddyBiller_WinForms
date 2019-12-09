@@ -59,5 +59,122 @@ namespace BuddyBiller.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid User Type..
+        /// </summary>
+        internal static string frmLogin_Login_Invalid_User_Type_ {
+            get {
+                return ResourceManager.GetString("frmLogin_Login_Invalid_User_Type_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login Failed. Try Again.
+        /// </summary>
+        internal static string frmLogin_Login_Login_Failed__Try_Again {
+            get {
+                return ResourceManager.GetString("frmLogin_Login_Login_Failed__Try_Again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fill in mandatory fields.
+        /// </summary>
+        internal static string FrmProducts_btnAdd_Click_Fill_in_mandatory_fields {
+            get {
+                return ResourceManager.GetString("FrmProducts_btnAdd_Click_Fill_in_mandatory_fields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the product to be deleted.
+        /// </summary>
+        internal static string frmProducts_btnDelete_Click_Select_the_product_to_be_deleted {
+            get {
+                return ResourceManager.GetString("frmProducts_btnDelete_Click_Select_the_product_to_be_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to Insert New Product Type..
+        /// </summary>
+        internal static string frmProductTypes_btnUpdate_Click_Failed_to_Insert_New_Product_Type_ {
+            get {
+                return ResourceManager.GetString("frmProductTypes_btnUpdate_Click_Failed_to_Insert_New_Product_Type_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Product Type Inserted/Updated Successfully..
+        /// </summary>
+        internal static string frmProductTypes_btnUpdate_Click_New_Product_Type_Inserted_Updated_Successfully_ {
+            get {
+                return ResourceManager.GetString("frmProductTypes_btnUpdate_Click_New_Product_Type_Inserted_Updated_Successfully_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Types.
+        /// </summary>
+        internal static string FrmUserDashboard_productTypeToolStripMenuItem_Click_Product_Types {
+            get {
+                return ResourceManager.GetString("FrmUserDashboard_productTypeToolStripMenuItem_Click_Product_Types", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to add new user.
+        /// </summary>
+        internal static string frmUsers_btnAdd_Click_Failed_to_add_new_user {
+            get {
+                return ResourceManager.GetString("frmUsers_btnAdd_Click_Failed_to_add_new_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User successfully created..
+        /// </summary>
+        internal static string frmUsers_btnAdd_Click_User_successfully_created_ {
+            get {
+                return ResourceManager.GetString("frmUsers_btnAdd_Click_User_successfully_created_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to delete user.
+        /// </summary>
+        internal static string frmUsers_btnDelete_Click_Failed_to_delete_user {
+            get {
+                return ResourceManager.GetString("frmUsers_btnDelete_Click_Failed_to_delete_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User deleted successfully.
+        /// </summary>
+        internal static string frmUsers_btnDelete_Click_User_deleted_successfully {
+            get {
+                return ResourceManager.GetString("frmUsers_btnDelete_Click_User_deleted_successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to update user.
+        /// </summary>
+        internal static string frmUsers_btnUpdate_Click_Failed_to_update_user {
+            get {
+                return ResourceManager.GetString("frmUsers_btnUpdate_Click_Failed_to_update_user", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User successfully updated.
+        /// </summary>
+        internal static string frmUsers_btnUpdate_Click_User_successfully_updated {
+            get {
+                return ResourceManager.GetString("frmUsers_btnUpdate_Click_User_successfully_updated", resourceCulture);
+            }
+        }
     }
 }

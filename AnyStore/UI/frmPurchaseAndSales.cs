@@ -1,25 +1,17 @@
-﻿using AnyStore.BLL;
-using AnyStore.DAL;
-using BB.System.Common;
-using DGVPrinterHelper;
+﻿using BB.System.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 using System.Windows.Forms;
 
 namespace AnyStore.UI
 {
-   
-    public partial class frmPurchaseAndSales : Form
+
+    public partial class FrmPurchaseAndSales : Form
     {
         BuddyBillerRepository db = new BuddyBillerRepository();
-        public frmPurchaseAndSales()
+        public FrmPurchaseAndSales()
         {
             InitializeComponent();
         }
@@ -32,7 +24,7 @@ namespace AnyStore.UI
         private void frmPurchaseAndSales_Load(object sender, EventArgs e)
         {
             //Get the transactionType value from frmUserDashboard
-            string type = frmUserDashboard.transactionType;
+            string type = FrmUserDashboard.transactionType;
             //Set the value on lblTop
             lblTop.Text = type;
 
@@ -64,7 +56,7 @@ namespace AnyStore.UI
             }
             else
             {
-                var fileteredPartyResult = db.Parties.Where(x => (x.Name.Contains(keyword) && x.IsActive)).Select(X => new GridParty { Id = X.Id, Name = X.Name, Type = X.Type, PhoneNumber = X.PhoneNumber, Address = X.Address, Email = X.Email, IsActive = X.IsActive }).FirstOrDefault();
+                var fileteredPartyResult = db.Parties.Where(x => (x.Name.Contains(keyword) && x.IsActive)).Select(x => new GridParty { Id = x.Id, Name = x.Name, Type = x.Type, PhoneNumber = x.PhoneNumber, Address = x.Address, Email = x.Email, IsActive = x.IsActive }).FirstOrDefault();
 
 
                 txtName.Text = fileteredPartyResult?.Name;
@@ -102,13 +94,13 @@ namespace AnyStore.UI
             TxtQty.Text = filteredProductResults?.Qty.ToString();
         }
 
-        List<AddedProductGrid> listOFAddedProducts = new List<AddedProductGrid>();
-        DataTable addedProductsDT;
+        List<AddedProductGrid> listOfAddedProducts = new List<AddedProductGrid>();
+        DataTable addedProductsDt;
 
         private void UpdateAddedProductGrid(AddedProductGrid product)
         {
-            listOFAddedProducts.Add(product);
-            addedProductsDT = DataSetLinqOperators.ToDataTable(listOFAddedProducts);
+            listOfAddedProducts.Add(product);
+            addedProductsDt = DataSetLinqOperators.ToDataTable(listOfAddedProducts);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -135,10 +127,9 @@ namespace AnyStore.UI
                 UpdateAddedProductGrid(product);
                 
                
-                dgvAddedProducts.DataSource = addedProductsDT;
+                dgvAddedProducts.DataSource = addedProductsDt;
 
                 CalculateSubTotal();
-                txtDiscount_TextChanged(sender, e);
 
                 //Clear the Textboxes
                 txtSearchProduct.Text = "";
@@ -152,38 +143,38 @@ namespace AnyStore.UI
         private void CalculateSubTotal()
         {
 
-            var subTotal = listOFAddedProducts.Sum(x => x.Total);
+            var subTotal = listOfAddedProducts.Sum(x => x.Total);
 
             txtSubTotal.Text = subTotal.ToString();
             
         }
-
-        private void txtDiscount_TextChanged(object sender, EventArgs e)
-        {
-           
-            
-        }
-
-        private void txtVat_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void txtPaidAmount_TextChanged(object sender, EventArgs e)
-        {
-    
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-           
-            
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            frmProducts products = new frmProducts();
+            FrmProducts products = new FrmProducts();
             products.Show();
+        }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressed(sender, e);
+        }
+
+        private static void KeyPressed(object sender, KeyPressEventArgs e)
+        {
+// allows 0-9, backspace, and decimal
+            if (((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // checks to make sure only 1 decimal is allowed
+            if (e.KeyChar == 46)
+            {
+                if ((sender as TextBox).Text.IndexOf(e.KeyChar) != -1)
+                    e.Handled = true;
+            }
         }
     }
 

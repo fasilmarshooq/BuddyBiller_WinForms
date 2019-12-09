@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AnyStore.BLL
+namespace BuddyBiller.BLL
 {
-    class transactionsBLL
+    class TransactionsBll
     {
-        public int id { get; set; }
-        public string type { get; set; }
-        public int dea_cust_id { get; set; }
-        public decimal grandTotal { get; set; }
-        public DateTime transaction_date { get; set; }
-        public decimal tax { get; set; }
-        public decimal discount { get; set; }
-        public int added_by { get; set; }
-        public DataTable transactionDetails { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public int DeaCustId { get; set; }
+        public decimal GrandTotal { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public decimal Tax { get; set; }
+        public decimal Discount { get; set; }
+        public int AddedBy { get; set; }
+        public DataTable TransactionDetails { get; set; }
 
     }
 }
